@@ -11,9 +11,10 @@
   - Fully darkened background before spell ring appears as in the OG animation.
   - Reverted Switch change and reduced saturation of knife auras so that each knife appears clearly in set up.
   - Reverted Switch change and ensured Sakuya is drawn at a lower depth to appear in front of the knives.
-  - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.Knife collapse animation portion used to prematurely draw opponent in the middle of knives. 
-  - Reverted Switch change to draw opponent sprite behind knives and slash effects.
+  - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
+  - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
