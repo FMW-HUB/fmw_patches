@@ -4,7 +4,7 @@ WIP Patch Repository for Fantasy Maiden Wars Complete Box - Dream of the Stray D
 Latest modding version: **1.2.2.1**
 
 # Instructions
-1. Download [xdeltaUI](https://www.romhacking.net/utilities/598/) to apply the `*.xdelta` patches in this repo. Each folder corresponds to the original version of the game; download the patches in the folder that apply to your current game version.
+1. Download [Delta Patcher](https://www.romhacking.net/utilities/704/) to apply the `*.xdelta` patches in this repo. Each folder corresponds to the original version of the game; download the patches in the folder that apply to your current game version.
 2. Download the mods folder and place it inside your user FMW app data folder for `fmw_dosd` (`C:\Users\<YOUR_USERNAME>\AppData\Local\fmw_dosd\`). The game will read this folder to access all json files that contain the EXE mods.
 3. Browse your local files for your installation of FMWCB - DSoD from Steam.
 4. Make a copy of your original `data.win` file; rename the old file to `data_old.win`.
