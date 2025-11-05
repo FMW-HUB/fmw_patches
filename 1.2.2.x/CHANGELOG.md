@@ -25,7 +25,19 @@
 - Toggle: Display Friendship Level of current frontline and/or backline unit in Battle Info
 - Toggle: Disable level up jingle SE
 - Toggle: Translated Debug Menu, enable debug menu as option (Need to exit the GlobalMenu and re-enter it to see the debug option pop up; this is currently how the game loads this option by mod) (DISCLAIMER: Make frequent backup saves. The DebugMenu may not be fully stable when modifying in-game save values and may crash on unexpected actions. I am not responsible for any unintended consequence on your saves. Better to be safe than sorry.)
-- Fix backline unit effects not activating due to missing pilot/unit_code update, like Ran's 1.5x/2x multiplying PSes
+- Fix backline unit effects not activating due to missing pilot/unit_code update.
+  - List of effects impacted by this bug:
+    - Satori's Recollection boosts
+    - Patchouli's Unmoving Library
+    - Hina's Centrifrugal Force
+    - Mima's Ancient Moon ability
+    - Rearguard Sanae's Faith buffs
+    - Shou's MP cost reduction PS
+    - Marisa's Orreries Sun ability
+    - Ran's Nine-tail PS
+    - Reimu's Fantasy Nature
+    - Utusho's Limiter Release buffs
+    - Patchouli's Philosopher's Stone
 - Restored FMW1 Private Square dodge animation
 - Restored Sakuya's World animation:
 
@@ -35,6 +47,7 @@
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
