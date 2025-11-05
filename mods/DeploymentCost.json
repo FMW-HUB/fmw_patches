@@ -1,1 +1,1 @@
-{"Name":"customCost","Desc":"Modify deployment cost \n(Set to -1 for default cost)\n(Set to 500 or higher for infinite cost)\nMin:-1, Max:999\nReload your saves for the updated cost \nto apply.","Type":2.0,"Min":-1,"Max":999,"Value":-1}
+{"Name":"customCost","Desc":"Modify deployment cost \n(Set to -1 for default cost)\n(Set to 500 or higher for infinite cost)\nMin:-1, Max:999\nReload your saves for the updated cost to apply.","Type":2.0,"Min":-1,"Max":999,"Value":-1}

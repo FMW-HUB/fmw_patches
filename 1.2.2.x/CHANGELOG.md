@@ -1,3 +1,14 @@
+###1.2.2.4###
+- Update modding menu UI framework to accept mod jsons that edit numerical and text values
+  - Display new popup window for accepting user input
+  - Text mods have no length limit for input, but input cannot be empty; this is to prevent potential crashes.
+  - Numerical mods have a minimum and maximum value defined in the json; input cannot exceed these boundaries and the game will throw an error message otherwise. This is to prevent crashes, however the minimum and maximum values can still be edited from the json on the user's end. Be careful if you try to modify these values outside the default safe boundaries.
+- Text: Change the global variable for the army name at any time. Due to the way the game reads the army name, you will need to set this through the modding menu, and create another save file for the new army name to be permanently written into your save.
+  - Additionally, the text prompt for inputting the army name on Chapter 71's intro has been restored. By default, the army name prompt will be set to "Fantasy Maiden Wars". Easter egg responses are currently not available; this requires a change to the data resource files for them to display properly.
+- Number: Edit deployment cost for the intermission and the map unit selection screen. Set to -1 for default chapter cost, or 500 or higher for infinite cost. Reload your saves for the updated cost to apply. 
+- Toggle: Change whether to display the HP/MP bar during battle animations
+- Toggle: Change whether to display the message window during battle animations
+
 ###1.2.2.3###
 - Fix animation issues for Sakuya's World and Private Square from faulty UTMT compilation.
 - Add back "Private Square" animation text.
