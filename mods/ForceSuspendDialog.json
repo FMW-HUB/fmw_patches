@@ -1,0 +1,1 @@
+{"Name":"forceSuspend","Desc":"Input a suspend dialog entry number to force the \nnext suspend save to play that entry. \n(Set to -1 for default suspend behavior)\nMin:-1, Max:82, entry number is indexed from 0","Type":2.0,"Min":-1,"Max":82,"Value":-1}
