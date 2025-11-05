@@ -1,25 +1,12 @@
 function optionalOf(arg0, arg1)
 {
     var globalVar = variable_global_get(arg0);
-    var type = arg1;
+    var defaultVar = arg1;
     
     if (globalVar != undefined)
-    {
         return globalVar;
-    }
     else
-    {
-        switch (type)
-        {
-            case 0:
-                return false;
-                break;
-            
-            default:
-                return undefined;
-                break;
-        }
-    }
+        return arg1;
 }
 
 function config_mod_init()
@@ -49,6 +36,14 @@ function config_mod_init()
         {
             case 0:
                 dataVal = bool(modStruct.Value);
+                break;
+            
+            case 1:
+                dataVal = string(modStruct.Value);
+                break;
+            
+            case 2:
+                dataVal = [int64(modStruct.Value), int64(modStruct.Min), int64(modStruct.Max)];
                 break;
             
             default:
