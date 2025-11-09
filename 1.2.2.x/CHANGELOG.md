@@ -1,3 +1,6 @@
+###1.2.2.5a hotfix###
+- Fix instance variable initialization crash when Sakuya grazes during Private Square. This bug was caused by certain variables not being set when the game attempts to draw the damage numbers during the Graze portion of Private Square.
+
 ###1.2.2.5###
 - Toggle: Restore FMW4 SP mechanics. This is an involved fix: 
   - The SP Regen skill only works in 1st 10 turns for player and enemy. SP Regen+ is untouched as it's an enemy-only skill.
@@ -74,6 +77,7 @@
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
