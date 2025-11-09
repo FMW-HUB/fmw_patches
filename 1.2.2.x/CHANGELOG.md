@@ -1,3 +1,22 @@
+###1.2.2.5###
+- Toggle: Restore FMW4 SP mechanics. This is an involved fix: 
+  - The SP Regen skill only works in 1st 10 turns for player and enemy. SP Regen+ is untouched as it's an enemy-only skill.
+  - Disable the universal +10 SP Regen for all player units. This includes singular units, units in a team, sub-units in Palanquin Ship and/or Unzan, and combined units. Enemy units still have the base +10 SP Regen as in FMW4.
+  - Player SP is no longer halved at the start of a chapter.
+  - Regen functions are updated to display the new SP regen values with these changes. 
+  - Reload your saves to update SP mechanics on various screens. Ideally, you should start chapters with the mod turned off. It can work in the middle of the chapter, but not everything will be updated for SP mechanics.
+- Toggle: Display parry, shield defense, and counter chances of the current ally and enemy frontline units in Battle Info. The text will dynamically appear and/or resize depending on the probability of each rate, i.e. if the enemy cannot counter in the case that an ally team launches an FPM attack, the Counter chance text will never appear.
+- Toggle: Stop PP-invested Skill stat points from increasing the enemy's shield defense activation chance. This is a mechanic since the original FMW3 that has always been an unusual interaction. It stands in stark contrast to the enemy Parry formula, which does intuitively get reduced if player has Skill stat points from invested PP. The displayed shield defense chance will also update with this fix if that mod is available.
+- Toggle: Disable casting spirits in the Battle Info screen. Both the button shortcut and UI option in Battle Info are disabled.
+- Toggle: Fix infinite turns bug with combined units by tracking turn count between splitting and recombining. This stops the Doorway to Dreams item and the +1 action from MAX EX investment from giving infinite turns to combined units. This may not be stable if toggled repeatedly throughout a chapter; it would be best to turn this on before the start of a chapter. This does not fix splitting and recombining refreshing the effect of the Exceeded Eternity item. A future mod will fix this; this is more involved as the game fills a global buffer that keeps track of which units have or have not activated the item. Thus, the fix will need to rework the integrated logic for the item. 
+- Fix modding menu bug where toggling a mod would not update the internal global variables if the mod value was marked as unchanged.
+- Fix Blossoming of Gensokyo's animation to get the correct sky background on Chapter 75.
+- Fix instance variable initialization bugs for Private Square that could cause crashes against certain enemy attacks.
+- Set foreground layers in the battle animation for Sakuya's World to be transparent, just like the animation in the OG games. Ideally, I would try to improve the animation by blending the foreground layers with grayscale colors. However, compiled graphical functions with UTMT are still buggy and the foreground layers do not lend well to using the GPU blend modes to change their colors. Once the modding tool improves, this could be a future improvement to be made.
+- Fix deployment cost editor mod to use default cost in resource files if it equals 0. This prevents potential locks barring player progression if the chapter is hard set to use 0 default cost.
+- Set the window caption to display the current modding version. This is now added after the title "Fantasy Maiden Wars - Dream of the Stray Dreamer -".
+- Fix RNG bug that prevented the loading screen from randomly displaying either the sweeping Reimu sprite or the flying Marisa sprite.
+
 ###1.2.2.4###
 - Update modding menu UI framework to accept mod jsons that edit numerical and text values
   - Display new popup window for accepting user input
