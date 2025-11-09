@@ -1,0 +1,1 @@
+{"Name":"combInfiniteFix","Desc":"Fix infinite turns bug with combined units \nby tracking turn count between \nsplitting and recombining\nMay not be stable if toggled repeatedly \nbetween turns throughout a chapter","Type":0.0,"Value":false}

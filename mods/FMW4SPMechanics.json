@@ -1,0 +1,1 @@
+{"Name":"restore4SP","Desc":"Restore FMW4 SP mechanics\n- SP Regen skill only works in 1st 10 turns\n- Disable universal +10 SP Regen\n- SP is not initially halved\n- Regen text is updated to account for changes\nReload saves to update SP mechanics \non various screens","Type":0.0,"Value":false}

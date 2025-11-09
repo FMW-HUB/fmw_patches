@@ -1,0 +1,1 @@
+{"Name":"shieldDefenseSkillFix","Desc":"Fix player invested Skill increasing \nenemy's shield defense activation chance\nUpdates displayed shield defense chance \nif mod is available","Type":0.0,"Value":false}
