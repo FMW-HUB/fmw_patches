@@ -1,3 +1,7 @@
+###1.2.2.5b hotfix###
+- Fix instance variable initialization crash when bullet objects are created. Certain animations spawn generic bullets that need to have certain variables set to work with Private Square.
+- Fix race condition bug caused by referencing the green screen object instance after it is destroyed. This crash can occur right before the animation for Private Square finishes. so there is a check now for whether the instance exists to avoid the bug. 
+
 ###1.2.2.5a hotfix###
 - Fix instance variable initialization crash when Sakuya grazes during Private Square. This bug was caused by certain variables not being set when the game attempts to draw the damage numbers during the Graze portion of Private Square.
 
@@ -9,9 +13,9 @@
   - Regen functions are updated to display the new SP regen values with these changes. 
   - Reload your saves to update SP mechanics on various screens. Ideally, you should start chapters with the mod turned off. It can work in the middle of the chapter, but not everything will be updated for SP mechanics.
 
-- Toggle: Display parry, shield defense, and counter chances of the current ally and enemy frontline units in Battle Info. The text will dynamically appear and/or resize depending on the probability of each rate, i.e. if the enemy cannot counter in the case that an ally team launches an FPM attack, the Counter chance text will never appear.
+- Toggle: Display parry, shield defense, and counter chances of the current ally and enemy frontline units in Battle Info. The text will dynamically appear and/or resize depending on the probability of each rate, i.e. if the enemy cannot counter in the case that an ally team launches an FPM attack, the counter chance text will never appear.
 
-- Toggle: Stop PP-invested Skill stat points from increasing the enemy's shield defense activation chance. This is a mechanic since the original FMW3 that has always been an unusual interaction. It stands in stark contrast to the enemy Parry formula, which does intuitively get reduced if player has Skill stat points from invested PP. The displayed shield defense chance will also update with this fix if that mod is available.
+- Toggle: Stop PP-invested Skill stat points from increasing the enemy's shield defense activation chance. This is a mechanic since the original FMW3 that has always been an unusual interaction. It stands in stark contrast to the enemy Parry formula, which does get intuitively reduced if a player unit has Skill stat points from invested PP. The displayed shield defense chance will also update with this fix if that mod is available.
 
 - Toggle: Disable casting spirits in the Battle Info screen. Both the button shortcut and UI option in Battle Info are disabled.
 
@@ -77,6 +81,7 @@
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
