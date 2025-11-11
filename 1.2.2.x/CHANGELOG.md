@@ -11,7 +11,7 @@
   - Disable the universal +10 SP Regen for all player units. This includes singular units, units in a team, sub-units in Palanquin Ship and/or Unzan, and combined units. Enemy units still have the base +10 SP Regen as in FMW4.
   - Player SP is no longer halved at the start of a chapter.
   - Regen functions are updated to display the new SP regen values with these changes. 
-  - Reload your saves to update SP mechanics on various screens. Ideally, you should start chapters with the mod turned off. It can work in the middle of the chapter, but not everything will be updated for SP mechanics.
+  - Reload your saves to update SP mechanics on various screens. Ideally, you should start chapters with the mod turned on. It can work in the middle of the chapter, but not everything will be updated for SP mechanics.
 
 - Toggle: Display parry, shield defense, and counter chances of the current ally and enemy frontline units in Battle Info. The text will dynamically appear and/or resize depending on the probability of each rate, i.e. if the enemy cannot counter in the case that an ally team launches an FPM attack, the counter chance text will never appear.
 
@@ -81,6 +81,7 @@
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
