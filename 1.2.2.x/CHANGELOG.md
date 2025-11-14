@@ -1,3 +1,14 @@
+###1.2.2.5c hotfix###
+- Fix crashes and incorrect reaction chance calculations in the reaction display mod due to incorrect unit position references. 
+
+The game stores pointers for the canonical unit positions in a Team at the start of each chapter. For example, if Satori/Koishi are in a Team in that vanguard/rearguard order, Satori will be assigned a canonical unit position 0, while Koishi will be assigned position 1. Then, the game initializes the pointers that reference these canonical unit positions. The vanguard pointer will obtain a reference of 0, while the rearguard pointer will start with a reference of 1. 
+
+Various actions can change the value stored in these pointers. If we switched Satori's and Koishi's positions in the previous example, the vanguard pointer would now store a canonical unit position of 1 to reference Koishi, while the rearguard pointer gets 0 to reference Satori. You can expect these pointers to change multiple times throughout the chapter, but it's important that we reference these pointers instead of hardcoding the canonical unit positions to avoid bugs that arise from an incorrect reference.
+
+The previous code used the canonical unit position of 0 to represent the vanguard unit instead of using the vanguard pointer in the reaction calculation. Depending on how your units were intially placed in a team, it was possible to get the wrong unit reference, which on average would miscalculate the reaction chances based on the unit in canonical position 0, or crash the game because the canonical position 0 unit's weapon list exceeded the length of the current vanguard unit's weapon list returned using correct vanguard pointer. More specifically, the game would throw an array out-of-bounds error when referencing weapon ids that were greater than the length of the current vanguard unit's weapon list. 
+
+- Translate the debug stage prompt. When the Debug Menu is enabled, entering chapter 77 on Route A from the Intermission will prompt the player to play the debug stage. The question was originally in Japanese, so this small patch translates that for the player.
+
 ###1.2.2.5b hotfix###
 - Fix instance variable initialization crash when bullet objects are created. Certain animations spawn generic bullets that need to have certain variables set to work with Private Square.
 - Fix race condition bug caused by referencing the green screen object instance after it is destroyed. This crash can occur right before the animation for Private Square finishes. so there is a check now for whether the instance exists to avoid the bug. 
