@@ -1,0 +1,1 @@
+{"Name":"IM_theme","Type":1.0,"Desc":"Change the BGM that plays \nduring the Intermission\nInput the internal name of the song \nexcluding the loop point \nReload your saves to apply BGM changes \nRequires the EnableLayeredFS mod to be active\n\n(Default internal name is bgm_gen_intermission2)","Value":"bgm_gen_intermission2"}
