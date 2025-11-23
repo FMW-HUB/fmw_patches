@@ -1,3 +1,335 @@
+###1.2.2.6-Beta###
+
+**This is a Beta version of the most recent patch leading to version 1.2.2.6. Changes are user-tested and playable, but there may be crashes for unexpected scenarios on the player end. More thorough testing is needed for the full 1.2.2.6 release. As always, please make sure to make frequent backups when playing on the latest mod versions.**
+
+- Toggle: Enable LayeredFS-like custom loading of data file resources. This is done through the following:
+  1. Create a `modData` folder in your local APPDATA FMW Folder: (`C:\Users\<YOUR_USERNAME>\AppData\Local\fmw_dosd\modData`)
+  2. Create another folder in `modData` that corresponds to the data archive that contains the files you wish to custom load.
+     - For example, if you want to edit unit attributes, you would create a `data4` folder (`C:\Users\<YOUR_USERNAME>\AppData\Local\fmw_dosd\modData\data4`) that will contain your custom `data_unit_all.txt` that you would like to load.
+  3. Place your custom files that correspond to these data folders. The LayeredFS tooling will pick up these files and load them in place of the original files. Some files are loaded on game startup, so you may need to restart your game for your custom changes to be picked up by certain files.
+
+- Text: Change the BGM that plays during the Intermission. You will need to input the internal name of the song (so everything before the left parenthesis starts the loop point). Reload your saves to apply BGM changes. This also requires the EnableLayeredFS mod to be active to load in the song you would like. (Default internal name is bgm_gen_intermission2)
+  - Add custom functionality to load in custom songs to be played in the Intermission. Follow these steps:
+    1. Prep your song as an OGG file. You will need to find the starting loop point for your song in seconds, and using an audio editing application like Audacity, you'll then crop your song so that the end becomes the ending loop point before your song repeats.
+    2. With the starting loop point number in seconds, you'll name your song's OGG file in this format: <FILENAME>(<STARTING_LOOP_POINT_SECONDS>).ogg
+    3. Once your file is ready, create a `data6-4` folder in the `modData` folder; the LayeredFS framework will read from this folder first for custom songs before looking in any of the other `data6` folders. Place your file in this folder (`C:\Users\<YOUR_USERNAME>\AppData\Local\fmw_dosd\modData\data6-4`).
+    4. Now, using the ChangeIntermissionBGM mod, input just the FILENAME of your ogg song file without the parentheses, loop point, or extension. Reload your saves and you should be able to hear your custom song.
+
+- Song Internal Names:
+**data6-1**
+```
+bgm_battle_AAsilent
+bgm_battle_Akyu
+bgm_battle_Alice
+bgm_battle_Alice2
+bgm_battle_Aya
+bgm_battle_Aya2
+bgm_battle_Byakuren
+bgm_battle_Chen
+bgm_battle_Cirno
+bgm_battle_Daiyosei
+bgm_battle_Eiki
+bgm_battle_Eirin
+bgm_battle_Elliy
+bgm_battle_Elliy2
+bgm_battle_Faries
+bgm_battle_Flan
+bgm_battle_Flan2
+bgm_battle_Flan3
+bgm_battle_Hatate
+bgm_battle_Hina
+bgm_battle_Hourai
+bgm_battle_Ichirin
+bgm_battle_Iku
+bgm_battle_Kaguya
+bgm_battle_Kanako
+bgm_battle_Keine
+bgm_battle_KeineH
+bgm_battle_Kisume
+bgm_battle_Koakuma
+bgm_battle_Kogasa
+bgm_battle_Koishi
+bgm_battle_Komachi
+bgm_battle_Kurumi
+bgm_battle_Letty
+bgm_battle_Letty2
+bgm_battle_LilyB
+bgm_battle_LilyW
+bgm_battle_LilyW_NS
+bgm_battle_Luna
+bgm_battle_Lunasa
+bgm_battle_Lyrica
+bgm_battle_Makura
+bgm_battle_Makura2
+bgm_battle_Marisa
+bgm_battle_MarisaEX
+bgm_battle_MarisaR
+bgm_battle_MarisaR_full
+bgm_battle_Medicine
+bgm_battle_Meiling
+bgm_battle_Meko
+bgm_battle_Meko2
+bgm_battle_MekoK
+bgm_battle_Merlin
+bgm_battle_Mima
+bgm_battle_Mima2
+bgm_battle_Minoriko
+bgm_battle_Mokou
+bgm_battle_MokouEX
+bgm_battle_Momiji
+bgm_battle_Murasa
+bgm_battle_Mystia
+bgm_battle_Nazrin
+bgm_battle_Nazrin_H
+bgm_battle_Nitori
+bgm_battle_Nitori_FA
+bgm_battle_Nitori_FA2
+bgm_battle_Nitori2
+bgm_battle_Nue
+bgm_battle_Nue2
+```
+
+**data6-2**
+```
+bgm_battle_Onamazu
+bgm_battle_Orin
+bgm_battle_Parsee
+bgm_battle_Patchouli
+bgm_battle_Prism
+bgm_battle_Ran
+bgm_battle_Ran2
+bgm_battle_Reimu
+bgm_battle_ReimuEX
+bgm_battle_ReimuR
+bgm_battle_ReimuR_full
+bgm_battle_Reisen
+bgm_battle_Remilia
+bgm_battle_Rumia
+bgm_battle_Sakuya
+bgm_battle_Sakuya2
+bgm_battle_Sanae
+bgm_battle_Sanae2
+bgm_battle_Sanae3
+bgm_battle_Satori
+bgm_battle_Seirensen
+bgm_battle_Shanghai
+bgm_battle_Shinki
+bgm_battle_Shitone
+bgm_battle_Shitone2
+bgm_battle_Shizuha
+bgm_battle_Sho
+bgm_battle_Sho_H
+bgm_battle_Star
+bgm_battle_Suika
+bgm_battle_Sunny
+bgm_battle_Suwako
+bgm_battle_Tenshi
+bgm_battle_Tensoku
+bgm_battle_Tensoku2
+bgm_battle_Tewi
+bgm_battle_Toyohime
+bgm_battle_Udonge
+bgm_battle_Unknown
+bgm_battle_Utsuho
+bgm_battle_UtsuhoB
+bgm_battle_UtsuhoH
+bgm_battle_UtsuhoH2
+bgm_battle_Wriggle
+bgm_battle_Yamame
+bgm_battle_Yorihime
+bgm_battle_Youmu
+bgm_battle_Youmu2
+bgm_battle_Yugi
+bgm_battle_Yuka
+bgm_battle_Yuka2
+bgm_battle_Yukachan
+bgm_battle_Yukari
+bgm_battle_Yukari2
+bgm_battle_Yukari3
+bgm_battle_Yumeko
+bgm_battle_Yuyuko
+bgm_battle_Yuyuko2
+bgm_weapon_AyaHata_DS
+bgm_weapon_Cirno_Fbaka
+bgm_weapon_Elliy_Reflector
+bgm_weapon_Faries_FOD
+bgm_weapon_Hina_Pain
+bgm_weapon_Iku_Gigadrill
+bgm_weapon_Keine_Zutsuki
+bgm_weapon_Marisa_Maspa
+bgm_weapon_Momiji_Bite
+bgm_weapon_Mystia_Master
+bgm_weapon_Mystia_Mysterious
+bgm_weapon_Mystia_Owl
+bgm_weapon_Mystia_Sparrow
+bgm_weapon_ReiMari_SMiiru
+bgm_weapon_Reimu_Miiru
+bgm_weapon_Reimu_Musou
+bgm_weapon_ReimuR_MT
+bgm_weapon_Rumia_Dimmer
+bgm_weapon_Sakuya_Meek
+bgm_weapon_SatoKoi_KHB
+bgm_weapon_SFormation
+bgm_weapon_Suika_Yakou
+bgm_weapon_Tenshi_Hisouten
+bgm_weapon_Udonge_Lunatic
+bgm_weapon_Wriggle_Kick
+bgm_weapon_Yuka_Maspa
+```
+
+**data6-3**
+```
+bgm_ep_53min
+bgm_ep_cafe
+bgm_ep_ecomes
+bgm_ep_eiya
+bgm_ep_Kanako
+bgm_gen_ED_Sakuya
+bgm_gen_ED01
+bgm_gen_ED02
+bgm_gen_ED03
+bgm_gen_ED04
+bgm_gen_intermission
+bgm_gen_intermission2
+bgm_gen_Mekoroom
+bgm_gen_musicroom
+bgm_gen_OP_Meko
+bgm_gen_op_theme
+bgm_gen_OP01
+bgm_gen_OP02
+bgm_gen_staffroll_Meko
+bgm_gen_staffroll01
+bgm_gen_staffroll02
+bgm_gen_staffroll03
+bgm_gen_staffroll04
+bgm_gen_staffroll04_loop
+bgm_pp_1969
+bgm_pp_1970
+bgm_pp_agartha
+bgm_pp_ayakashi
+bgm_pp_ayakashiP
+bgm_pp_circus
+bgm_pp_dendera
+bgm_pp_eiyasho
+bgm_pp_ekg
+bgm_pp_enigma
+bgm_pp_final
+bgm_pp_getsumen
+bgm_pp_gfree
+bgm_pp_greenwich
+bgm_pp_GSW
+bgm_pp_hokkai
+bgm_pp_izanagi
+bgm_pp_izanagi0
+bgm_pp_jujigun
+bgm_pp_Kanako
+bgm_pp_kasho
+bgm_pp_kikai
+bgm_pp_kurenai
+bgm_pp_kurenai_loop
+bgm_pp_lastremote
+bgm_pp_makai
+bgm_pp_mantle
+bgm_pp_michi
+bgm_pp_mugen01
+bgm_pp_mugen02
+bgm_pp_mugen03
+bgm_pp_mugen04
+bgm_pp_mugen05
+bgm_pp_mukui
+bgm_pp_pcomes
+bgm_pp_pinch
+bgm_pp_prism01
+bgm_pp_prism02
+bgm_pp_prism03
+bgm_pp_prism04
+bgm_pp_pscore
+bgm_pp_renmery
+bgm_pp_tepes
+bgm_pp_tokoshie
+bgm_pp_toroya
+bgm_pp_truth
+bgm_pp_warabe
+bgm_pp_warabe0
+bgm_pp_wind
+bgm_pp_Yukachan
+bgm_talk_aircraft01
+bgm_talk_aoki
+bgm_talk_applause01
+bgm_talk_applause02
+bgm_talk_blizzard
+bgm_talk_bomb
+bgm_talk_cave
+bgm_talk_dream
+bgm_talk_emergency
+bgm_talk_fire
+bgm_talk_flanhelp1
+bgm_talk_flanhelp2
+bgm_talk_flanhelp3
+bgm_talk_gag
+bgm_talk_heartbeat
+bgm_talk_heartfelt
+bgm_talk_hiroshige
+bgm_talk_inishie
+bgm_talk_insect
+bgm_talk_interlude01
+bgm_talk_interlude02
+bgm_talk_kagaku
+bgm_talk_kaikidan
+bgm_talk_korekara
+bgm_talk_morning
+bgm_talk_ningyo
+bgm_talk_potion
+bgm_talk_rain01
+bgm_talk_rain02
+bgm_talk_rain03
+bgm_talk_shigan
+bgm_talk_soratoumi
+bgm_talk_summer01
+bgm_talk_underwater
+bgm_talk_unknown
+bgm_talk_waterfall
+bgm_talk_waterfall2
+bgm_talk_wave01
+bgm_talk_wind01
+bgm_talk_yokoku
+bgm_talk_yokoku2
+bgm_talk_yozakura
+bgm_talk_yuutsu1
+bgm_talk_yuutsu2
+jingle_flanhelp
+jingle_gameover
+jingle_levelup
+jingle_levelup_short
+jingle_stage_start
+jingle_stage_start_bou
+jingle_stage_start_Broute
+jingle_stage_start_chi
+jingle_stage_start_ei
+jingle_stage_start_fin
+jingle_stage_start_gen
+jingle_stage_start_hoshi
+jingle_stage_start_kaze
+jingle_stage_start_kou
+jingle_stage_start_Meko
+jingle_stage_start_Sakuya
+jingle_stage_start_you
+```
+
+- Toggle: Enable all player units to be selected for NG+ carryover. This is an experimental feature that has not been thoroughly tested; be wary of certain carryovers not behaving as you would expect. OTOH, the Palanquin Ship, Meeko, Makura are disabled, while combined units may crash the game due to undefined actions. Go wild at your caution.
+
+- Toggle: Remove the exponential damage cap from player Yorihime's Takemikazuchi and set formula to Normal+ and above enemy version.
+
+- Toggle: Restore Mystia's Song mechanics from FMW4. NOTE: FMW4 song buffs are limited to 1 type active at a time. Future songs will overwrite the previous buff, if applicable. Song effects are listed below (without the Valor/Songstress boost)
+  - SotnS: Accuracy/Evade stats +30
+    - MAP: Centered-radius, targets Team, Accuracy/Evade +20
+  - HotHO: Defense stat +30/Skill stat +15
+    - MAP: Centered-radius, Defense +20/Skill +10
+  - MCM: Cqb/Range/Accuracy stats +40
+    - MAP: Centered-radius, Cqb/Range/Accuracy +20
+   
+- Fix infinite loop bug in the Battle Info screen when effect tags + abbreviated spirit names exceeded beyond ~400 pixels. Text truncation was introduced on certain text fields to shorten the English translation text, which is much longer than the JPN text. The game hits an infinite loop when trying to truncate text in the Battle Info screen. Casting too many effects/Spirits and filling the battle info screen will cause the game to continuously shorten the text for Spirits until the text can fit on screen. However, in some cases, the game gets stuck shortening Spirit text even when it reaches a length of 0 since the text hasn't met the condition of being fit on screen. Thus, this fix takes into account those cases to allow the game to truncate safely and not hit an infinite loop when the text expands too much.
+
 ###1.2.2.5c hotfix###
 - Fix crashes and incorrect reaction chance calculations in the reaction display mod due to incorrect unit position references. 
 
@@ -92,6 +424,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
