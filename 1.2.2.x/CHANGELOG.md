@@ -11,7 +11,7 @@
 - Text: Change the BGM that plays during the Intermission. You will need to input the internal name of the song (so everything before the left parenthesis starts the loop point). Reload your saves to apply BGM changes. This also requires the EnableLayeredFS mod to be active to load in the song you would like. (Default internal name is bgm_gen_intermission2)
   - Add custom functionality to load in custom songs to be played in the Intermission. Follow these steps:
     1. Prep your song as an OGG file. You will need to find the starting loop point for your song in seconds, and using an audio editing application like Audacity, you'll then crop your song so that the end becomes the ending loop point before your song repeats.
-    2. With the starting loop point number in seconds, you'll name your song's OGG file in this format: <FILENAME>(<STARTING_LOOP_POINT_SECONDS>).ogg
+    2. With the starting loop point number in seconds, you'll name your song's OGG file in this format: `<FILENAME>(<STARTING_LOOP_POINT_SECONDS>).ogg`
     3. Once your file is ready, create a `data6-4` folder in the `modData` folder; the LayeredFS framework will read from this folder first for custom songs before looking in any of the other `data6` folders. Place your file in this folder (`C:\Users\<YOUR_USERNAME>\AppData\Local\fmw_dosd\modData\data6-4`).
     4. Now, using the ChangeIntermissionBGM mod, input just the FILENAME of your ogg song file without the parentheses, loop point, or extension. Reload your saves and you should be able to hear your custom song.
 
@@ -424,6 +424,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
