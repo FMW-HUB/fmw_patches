@@ -7,6 +7,7 @@
   2. Create another folder in `modData` that corresponds to the data archive that contains the files you wish to custom load.
      - For example, if you want to edit unit attributes, you would create a `data4` folder (`C:\Users\<YOUR_USERNAME>\AppData\Local\fmw_dosd\modData\data4`) that will contain your custom `data_unit_all.txt` that you would like to load.
   3. Place your custom files that correspond to these data folders. The LayeredFS tooling will pick up these files and load them in place of the original files. Some files are loaded on game startup, so you may need to restart your game for your custom changes to be picked up by certain files.
+  4. Don't forget to enable the mod through the modding menu UI. Restart your game afterwards if needed.
 
 - Text: Change the BGM that plays during the Intermission. You will need to input the internal name of the song (so everything before the left parenthesis starts the loop point). Reload your saves to apply BGM changes. This also requires the EnableLayeredFS mod to be active to load in the song you would like. (Default internal name is bgm_gen_intermission2)
   - Add custom functionality to load in custom songs to be played in the Intermission. Follow these steps:
@@ -425,6 +426,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
