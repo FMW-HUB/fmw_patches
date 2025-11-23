@@ -1,7 +1,9 @@
 # fmw_patches
 WIP Patch Repository for Fantasy Maiden Wars Complete Box - Dream of the Stray Dreamer
 
-Latest modding version: **1.2.2.5c**
+**This is a Beta version of the most recent patch leading to version 1.2.2.6. Changes are user-tested and playable, but there may be crashes for unexpected scenarios on the player end. More thorough testing is needed for the full 1.2.2.6 release. As always, please make sure to make frequent backups when playing on the latest mod versions.**
+
+Latest Beta modding version: **1.2.2.6-Beta**
 
 # Instructions
 1. Download [Delta Patcher](https://www.romhacking.net/utilities/704/) to apply the `*.xdelta` patches in this repo. Each folder corresponds to the original version of the game; download the patches in the folder that apply to your current game version.
