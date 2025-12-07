@@ -1,3 +1,5 @@
+# Deprecated, Get 1.2.2.6 from the main branch.
+
 # fmw_patches
 WIP Patch Repository for Fantasy Maiden Wars Complete Box - Dream of the Stray Dreamer
 
