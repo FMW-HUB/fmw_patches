@@ -41,7 +41,7 @@
 
 - With the `addOn` system, I have added sample entries for enemy units that can be used on the player side. Added the `Kedama`, `Evil Eye`, `Kappa`, and `Makai Insect`. By default, enabling these units on the player side is disabled. To enable these units, open the `Data_IsIN` in `data5-4`, `data_unit_all` in `data4`, and `data_char_all` in `data4` addOn files, find each json entry that marks the patch entry as `"Enabled":false`, and change the false to true. 
   - A critical warning, because new units can be added, this will almost certain modify your saves in new, unintended ways. It shouldn't crash because the changes still follow the save format of the vanilla game; however, new data will be added to those saves that were not designed in mind. Always make sure to keep a backup of your saves.
-  - Fix assist attack animations to work generically without relying on the animation scripts in the exe. THe animation will play the FPM choreography without the UI, but this is necessary to stop the game from drawing unexpected elements or glitching out during the animations. As a result, dialog that is played is set to the FPM dialog.
+  - Fix assist attack animations to work generically without relying on the animation scripts in the exe, if the assist attack is newly added for weapons outside of the expected set. The animation will play the FPM choreography without the UI, but this is necessary to stop the game from drawing unexpected elements or glitching out during the animations. As a result, dialog that is played is set to the FPM dialog.
   - Fix object deletion bug that would occur when the `Evil Light Charge` attack was used in FPM and the Evil Eye's partner attacked first. Deactivated the instance and reactivated it later on after the partner's attack to prevent the game from referencing a non-existent object.
 
 - Fix Debug Menu oddities.
@@ -500,6 +500,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
