@@ -1,0 +1,1 @@
+{"Name":"unitTileColor","Value":"233,33,33","Type":1.0,"Desc":"Change tile color for unit interactions.\nInput 3 comma-separated real numbers \nto control the R,G,B values of the displayed color.\nFor example, inputting 255,165,0 will display \norange tiles.\n\nInputs with an invalid format will fallback\nto the default color.\nDefault red color is 233,33,33"}
