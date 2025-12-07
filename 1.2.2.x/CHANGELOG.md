@@ -36,7 +36,7 @@
 - Using the `addOn` system, restore the original Four of a Kind animation from FMW1, renamed as `Scarlet Four of a Kind`. This has the same stats as the current FOK; only difference is the animation. Battle dialog has been added through the dialog text and meta `addOns` for Flandre, and the weapon is added as an `Append Weapon`. This means it will be added on top of already existing changes made through LayeredFS or other modding means.
 
 - Restore FMW1 dialogue for the Evil Eye enemy. This was accomplished again through the `addOn` system. All dialog from the original 1.1.2 FMW1 translation has been ported over.
- - Credits to Deranged/Gensokyo.org for translating these lines in FMW1.
+   - Credits to Deranged/Gensokyo.org for translating these lines in FMW1.
 
 - With the `addOn` system, I have added sample entries for enemy units that can be used on the player side. Added the `Kedama`, `Evil Eye`, `Kappa`, and `Makai Insect`. By default, enabling these units on the player side is disabled. To enable these units, open the `Data_IsIN` in `data5-4`, `data_unit_all` in `data4`, and `data_char_all` in `data4` addOn files, find each json entry that marks the patch entry as `"Enabled":false`, and change the false to true. 
   - A critical warning, because new units can be added, this will almost certain modify your saves in new, unintended ways. It shouldn't crash because the changes still follow the save format of the vanilla game; however, new data will be added to those saves that were not designed in mind. Always make sure to keep a backup of your saves.
@@ -499,6 +499,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
