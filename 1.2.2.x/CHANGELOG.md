@@ -16,7 +16,7 @@
   For one turn, all frontline allied units are considered adjacent to each other.
   This does not affect Support or Combined unit actions.
   ```
-  - [RESTORED] Boundary of Vanguard and Reargurd
+  - [RESTORED] Boundary of Vanguard and Rearguard
   ```
   Switches the frontline and backline positions of all other allied units in a team.
   This effect also applies to units that have already acted. (3 uses)
@@ -499,6 +499,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
