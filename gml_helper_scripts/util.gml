@@ -56,3 +56,28 @@ function config_mod_init()
         file_text_close(f);
     }
 }
+
+function colorOverride(arg0, arg1)
+{
+    try
+    {
+        var colorString = optionalOf(arg0, arg1);
+        var splitRGB = string_split(colorString, ",");
+        
+        if (array_length(splitRGB) != 3)
+            throw "Invalid string format";
+        
+        var R_color = real(splitRGB[0]);
+        var G_color = real(splitRGB[1]);
+        var B_color = real(splitRGB[2]);
+        return make_color_rgb(R_color, G_color, B_color);
+    }
+    catch (_exception)
+    {
+        var splitRGB = string_split(arg1, ",");
+        var R_color = real(splitRGB[0]);
+        var G_color = real(splitRGB[1]);
+        var B_color = real(splitRGB[2]);
+        return make_color_rgb(R_color, G_color, B_color);
+    }
+}
