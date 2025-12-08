@@ -1,3 +1,19 @@
+###1.2.2.6b hotfix###
+- Finally fix the looping modding menu bug when text/number edit mods were selected when in fullscreen with a controller. This is a strange bug that occurs with the get_string function, controller use, and the fullscreen function. With all active at the same time, the game will keep repeating controller select inputs to constantly enter the input window, thus causing the infinite loop. Perhaps there is an internal bug with get_string that's causing the controller inputs to be spammed constantly, but I have still not found the direct root cause, instead it's only the components.
+
+- Fix Debug Menu bugs.
+  - Fix the internal values for Upgrade Rate, Points, PP, WP, and Kills not being reset to the defaults or 0 after applying changes. This had caused unexpected increments for each option even when the display showed the defaults; after selecting confirm, the previously selected options would still apply to your current units.
+  - Cap Debug Menu additions to Points, PP, WP, and Kills to their internal max limits. If any of the options would exceed their internal max limit after the add, the previous value for each value would remain the same, and no additions would take place. For kills, since the limit is 9999, adding 10000 would set the total kills to the max-1 at 9998, to prevent off-by-one errors.
+    - Points max internal limit: 999999999
+    - PP max internal limit:99999
+    - EX max internal limit: 99999
+    - Kills max internal limit: 9999
+
+- Fix addOn system not being able to append weapons to characters that have hard-set weapons for cutscene/death animations in their weapon list. The addOn system increments the number of weapons a unit can have in their unit data, and then adds the new weapon to the end of their weapon list. However, weapons are still read sequentially, and because cutscene/death animations are located at the end of the list, those weapons will be added instead to the UI. The new change for addOns pinpoints the index for these cutscene/death weapons on these characters and inserts the new weapons before these cutscene/death weapons.
+
+- Restore eternal meek animation. There are still some missing effects in data3 and data12 that need to be added for the animation to be complete.
+
+
 ###1.2.2.6a hotfix###
 - Fix gamebreaking bug where event battles did not have a certain variable initialized for Boundary of Offense and Defense.
 
@@ -503,6 +519,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
