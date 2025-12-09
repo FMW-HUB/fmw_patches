@@ -1,6 +1,6 @@
 ###1.2.2.6b hotfix###
 - Finally fix the looping modding menu bug when text/number edit mods were selected when in fullscreen with a controller. This is a strange bug that occurs with the get_string function, controller use, and the fullscreen function. With all active at the same time, the game will keep repeating controller select inputs to constantly enter the input window, thus causing the infinite loop. Perhaps there is an internal bug with get_string that's causing the controller inputs to be spammed constantly, but I have still not found the direct root cause, instead it's only the components.
-  - Very rarely, I've seen the infinite loop bug come back once or twice, but I was able to get through those cases by clicking on the main game menu to refocus the window, then Alt+Enter to disable fullscreen, then tried pressing OK on the input window again. This can happen at times due to the unstable implmentation of the input window in Gamemaker's engine; there's definitely room to improve here.
+  - Very rarely, I've seen the infinite loop bug come back once or twice, but I was able to get through those cases by clicking on the main game menu to refocus the window, then Alt+Enter to disable fullscreen (or multiple times if needed), then tried pressing OK on the input window again. This can happen at times due to the unstable implmentation of the input window in Gamemaker's engine; there's definitely room to improve here.
 
 - Fix Debug Menu bugs.
   - Fix the internal values for Upgrade Rate, Points, PP, WP, and Kills not being reset to the defaults or 0 after applying changes. This had caused unexpected increments for each option even when the display showed the defaults; after selecting confirm, the previously selected options would still apply to your current units.
@@ -520,6 +520,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
