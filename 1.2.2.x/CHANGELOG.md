@@ -1,3 +1,94 @@
+###1.2.2.6b hotfix###
+- Finally fix the looping modding menu bug when text/number edit mods were selected when in fullscreen with a controller. This is a strange bug that occurs with the get_string function, controller use, and the fullscreen function. With all active at the same time, the game will keep repeating controller select inputs to constantly enter the input window, thus causing the infinite loop. Perhaps there is an internal bug with get_string that's causing the controller inputs to be spammed constantly, but I have still not found the direct root cause, instead it's only the components.
+  - Very rarely, I've seen the infinite loop bug come back once or twice, but I was able to get through those cases by clicking on the main game menu to refocus the window, then Alt+Enter to disable fullscreen (or multiple times if needed), then tried pressing OK on the input window again. This can happen at times due to the unstable implmentation of the input window in Gamemaker's engine; there's definitely room to improve here.
+
+- Fix Debug Menu bugs.
+  - Fix the internal values for Upgrade Rate, Points, PP, WP, and Kills not being reset to the defaults or 0 after applying changes. This had caused unexpected increments for each option even when the display showed the defaults; after selecting confirm, the previously selected options would still apply to your current units.
+  - Cap Debug Menu additions to Points, PP, WP, and Kills to their internal max limits. If any of the options would exceed their internal max limit after the add, the previous value for each value would remain the same, and no additions would take place. For kills, since the limit is 9999, adding 10000 would set the total kills to the max-1 at 9998, to prevent off-by-one errors.
+    - Points max internal limit: 999999999
+    - PP max internal limit:99999
+    - EX max internal limit: 99999
+    - Kills max internal limit: 9999
+
+- Fix addOn system not being able to append weapons to characters that have hard-set weapons for cutscene/death animations in their weapon list. The addOn system increments the number of weapons a unit can have in their unit data, and then adds the new weapon to the end of their weapon list. However, weapons are still read sequentially, and because cutscene/death animations are located at the end of the list, those weapons will be added instead to the UI. The new change for addOns pinpoints the index for these cutscene/death weapons on these characters and inserts the new weapons before these cutscene/death weapons.
+
+- Restore eternal meek animation. There are still some missing effects in data3 and data12 that need to be added for the animation to be complete.
+
+
+###1.2.2.6a hotfix###
+- Fix gamebreaking bug where event battles did not have a certain variable initialized for Boundary of Offense and Defense.
+
+###1.2.2.6###
+- PSes:
+  - [NEW] Noblesse Oblige
+  ```
+  For one turn, grants the ability Salamander Shield to all adjacent units.
+  This effect also applies to the unit's partner. (Usable 2 times.)
+  ```
+  - [NEW] Boundary of Offense and Defense
+  ```
+  For one turn, reverses the attack order for all battles between allied and enemy units.
+  Additionally, Player Support Attacks still only occur during the Player Phase,
+  while Player Support Defends only occur during the Enemy Phase. (Usable 2 times.)
+  ```
+  - [RESTORED] Boundary of Dreams and Bonds (Original)
+  ```
+  For one turn, all frontline allied units are considered adjacent to each other.
+  This does not affect Support or Combined unit actions.
+  ```
+  - [RESTORED] Boundary of Vanguard and Rearguard
+  ```
+  Switches the frontline and backline positions of all other allied units in a team.
+  This effect also applies to units that have already acted. (3 uses)
+  ```
+  - [RESTORED] Boundary of Focused and Unfocused
+  ```
+  Switches the Focused and Unfocused modes of all other allied units.
+  This effect also applies to units that have already acted. (3 uses)
+  ```
+
+- Implement the `addOn` system. We now have a way to perform in-memory data file structure patching with this new system. The addOns for each data file allow you to add new json structure entries that correspond to individual spreadsheet rows for each data file. Think of this as letting you patch and add in-memory data file structures with your own custom fields. At the moment, this only supports adding new data, but in the future replacement will be possible as well. Use the LayeredFS mod tool to replace existing data rows for now.
+  - Think of new data row entries as json structures now. The names mapping to values are fairly intuitive to read instead of parsing a CSV or plaintext file. For certain `addOns`, you can select whether to enable or disable the data row addition.
+  - Currently, the system has support for certain data files in `data5-4` and dialog files in `data4`. Some data files have the structure laid out but are NOT_IMPLEMENTED at this time. They will be added later on.
+  - This tool supports adding new weapons while taking into the account the numWeapons field in the unit data. You can add new weapons on top of other changes to weapons that have already been made through LayeredFS.
+  - Will add additional documentation to help understand some of the required and optional fields that can help in `addOn` patching.
+
+- Using the `addOn` system, restore the original Four of a Kind animation from FMW1, renamed as `Scarlet Four of a Kind`. This has the same stats as the current FOK; only difference is the animation. Battle dialog has been added through the dialog text and meta `addOns` for Flandre, and the weapon is added as an `Append Weapon`. This means it will be added on top of already existing changes made through LayeredFS or other modding means.
+  - Download the addOns folder and place it inside your user FMW app data folder for `fmw_dosd` (`C:\Users\<YOUR_USERNAME>\AppData\Local\fmw_dosd\`).
+
+- Restore FMW1 dialogue for the Evil Eye enemy. This was accomplished again through the `addOn` system. All dialog from the original 1.1.2 FMW1 translation has been ported over.
+   - Credits to Deranged/Gensokyo.org for translating these lines in FMW1.
+
+- With the `addOn` system, I have added sample entries for enemy units that can be used on the player side. Added the `Kedama`, `Evil Eye`, `Kappa`, and `Makai Insect`. By default, enabling these units on the player side is disabled. To enable these units, open the `Data_IsIN` in `data5-4`, `data_unit_all` in `data4`, and `data_char_all` in `data4` addOn files, find each json entry that marks the patch entry as `"Enabled":false`, and change the false to true. 
+  - A critical warning, because new units can be added, this will almost certain modify your saves in new, unintended ways. It shouldn't crash because the changes still follow the save format of the vanilla game; however, new data will be added to those saves that were not designed in mind. Always make sure to keep a backup of your saves.
+  - Fix assist attack animations to work generically without relying on the animation scripts in the exe, if the assist attack is newly added for weapons outside of the expected set. The animation will play the FPM choreography without the UI, but this is necessary to stop the game from drawing unexpected elements or glitching out during the animations. As a result, dialog that is played is set to the FPM dialog.
+  - Fix object deletion bug that would occur when the `Evil Light Charge` attack was used in FPM and the Evil Eye's partner attacked first. Deactivated the instance and reactivated it later on after the partner's attack to prevent the game from referencing a non-existent object.
+
+- Fix Debug Menu oddities.
+  - The `Unlock All Skills` has been clarified as `Unlock ALl Skills in Arc`. What this does is unlock all skills a unit can learn up to the level cap of the current arc the player is in.
+  - Decouple the `Add PP` option and stop it from adding to kill total. There is now a separate `Add Kills` option to add Kills for all units.
+  - The `Unlock All Skills in Arc`, `Add PP`, `Add Kills` options used to not update immediately after confirming the choices in the Debug Menu. This is now changed to reload the Intermission if any one or more of these options are selected to update the UI correctly.
+  - Fix the internal value for the chapter select to reset to the `Default` option. Previously, after selecting another chapter to warp to, the internal value would be stuck at the previously selected chapter number. This could cause unexpected events to happen such as start of Intermission events repeating multiple times, like obtaining items.
+
+- Added mods:
+  - Text: Change the color of the displayed tiles for generic danmaku fields.
+  - Text: Change the color of the displayed tiles for spellcard danmaku fields. Due to the way the colors are blended amongst the spellcard danmaku tiles, you will need to wait for the boss to regenerate the spellcard danmaku for the color changes to apply.
+  - Text: Change the color of the displayed tiles for unit interactions, such as movement, attack range, PS cast, etc.
+  - Toggle: Move the Parry/Shield Defense icons to the right of the unit name box. This prevents these icons from being covered by unit buffs/debuffs if present.
+  - Toggle: Display the internal unit/character data ID in the unit/status UI screens respectively. This is useful for debugging and confirming assumptions for updating internal unit/character data between chapters.
+
+- Read the current saved army name in the ChangeArmyName mod json and use this as the default value for the mandatory text input window during the Chapter 71 Intro scenes.
+
+- Move the Reaction chance display UI further down to avoid conflicting with Support Attack/Support Defense UI elements.
+
+- Use the platform-agnostic `string_width` function to get the length of truncation characters instead of harcoding the pixel width of those characters. This is necessary for the Spirit text truncation bug on the Battle Info screen.
+
+- Extend the PS Levelup screen to display beyond the normally allowed 6 PSes during level up. Originally, the PS Levelup screen only took into account a unit getting at most 6 PSes throughout the game. If any more PSes are added, the subsequent PS entries in the level up screen will start overlapping with the existing PS entry descriptions. This change adds new paging UI that lets the player scroll through multiple screens of PSes if the unit has more than 6.
+
+- Remove Palanquin Ship and Rinnosuke from the pool of selectable units enabled by the NG+ Carryover mod. These units had common unit interactions that crashed the game. More work will need to be done to make these units stable.
+
+- Fix infinite loop bug when inputting values in the text/number editing mod input windows. The input windows no longer yield until user input. Certain Windows distributions seem to not synchronously hold a stable value for the user input, which causes the mod menu logic to read an invalid input and loop infinitely.
+
 ###1.2.2.6a-Beta hotfix###
 - Fix LayeredFS bug not loading in the correct filename for sound effects when the LayeredFS mod is enabled.
 
@@ -429,6 +520,15 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
+
+
+
+
+
+
+
+
 
 
 
