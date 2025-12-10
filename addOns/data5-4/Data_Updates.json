@@ -1,1 +1,1 @@
-{"Data_Updates":{"Active":"NOT_IMPLEMENTED","AddOn":[{"Enabled":false,"StageNumber":"Number","UnitID":"String","UnitDataID":"String","CharID":"String","CharDataID":"String","FlagID":"String"}]}}
+{"Data_Updates":{"Active":"NOT_IMPLEMENTED","AddOn":[{"Enabled":false,"StageNum":"Number","UnitID":"String","UnitDataID":"String","CharID":"String","CharDataID":"String","FlagID":"String"}]}}

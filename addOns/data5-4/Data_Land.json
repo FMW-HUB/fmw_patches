@@ -1,1 +1,1 @@
-{"Data_Land":{"Active":"NOT_IMPLEMENTED","AddOn":[{"Enabled":false,"ID":"String","Name":"String","Evade":"Number","Defense":"Number","Move":"Number","HP_Regen":"Number","MP_Regen":"Number","TerrainType":"Number"}]}}
+{"Data_Land":{"Active":"NOT_IMPLEMENTED","AddOn":[{"Enabled":false,"ID":"String","Name":"String","Evade":"Number","Defense":"Number","Move":"Number","HPRegen":"Number","MPRegen":"Number","Type":"Number"}]}}
