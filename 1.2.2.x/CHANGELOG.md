@@ -137,7 +137,7 @@ SkillKind -> Kind
 
 - Restore Meditation Slash missing effects. The enemy sprite is now split at the end of the animation. However, this still needs improvement as this effect can break against larger sprites.
 
-- Fix event bug in Chapter 43 where the game hardcoded the weapon position to be used for the Scarlets cutscene attack. The game will look for Remilia's 6th weapon in her internal weapon list. Because the addOn system now inserts weapons before Scarlets, it's possible that Remilia will use a different weapon than Scarlets, and the game can either play out a different animation or crash.
+- Fix event bug in Chapter 44 where the game hardcoded the weapon position to be used for the Scarlets cutscene attack. The game will look for Remilia's 6th weapon in her internal weapon list. Because the addOn system now inserts weapons before Scarlets, it's possible that Remilia will use a different weapon than Scarlets, and the game can either play out a different animation or crash.
 
 - PSes:
   - [RESTORED] Omikuji Bomb
@@ -706,6 +706,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
