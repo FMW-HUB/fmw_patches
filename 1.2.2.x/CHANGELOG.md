@@ -1,3 +1,189 @@
+###1.2.2.6c###
+- Update addOn JSON format to optimize file size and correct previous fields that were incorrect labels for the dialog conditions. This does mean that previous dialog text and meta files need to be updated to the new format to be read correctly by the game. This should be a simple find-and-replace, but I will list all the fields that were changed in all addOns. Ideally, redownload the latest addOns and add your changes back into each file as needed.
+
+- Starting with the dialog and weapon files that need changes first:
+
+dialog_text does not need to be changed.
+
+dialog_meta:
+```
+FullPowerModeFront -> FPMFront
+FullPowerModeBack -> FPMBack
+OutOfRange -> Retreat
+EnemyID -> EntityID
+Chapter_DenyList -> DenyList
+AfterBattle -> Defend_Evade
+Opposition -> NoCounter
+```
+
+data_weapon_all:
+```
+WeaponDataID -> ID
+WeaponName -> Name
+WeaponAnimation -> Anime
+WeaponKind -> Kind
+WeaponDamage -> Damage
+WeaponRangeMin -> RangeMin
+WeaponRangeMax -> RangeMax
+WeaponAccuracy -> Accuracy
+WeaponCritical -> Critical
+WeaponLaser -> Laser
+WeaponPostM -> PostM
+WeaponSolid -> Solid
+WeaponAmmoMax -> AmmoMax
+WeaponMPCost -> MPCost
+WeaponMinPower -> MinPower
+WeaponSky -> Sky
+WeaponLand -> Land
+WeaponWater -> Water
+WeaponNight -> Night
+WeaponAssist -> Assist
+WeaponBarrier -> Barrier
+WeaponSize -> Size
+WeaponSpecial -> Special
+WeaponShape -> Shape
+WeaponCMBPartner -> Partner
+WeaponBGM -> BGM
+WeaponEffect -> Effect
+```
+
+- Next are the other files that need their fields to be changed.
+
+Data_PairName:
+```
+PairCharID1 -> CharID1
+PairCharID2 -> CharID2
+PairName1 -> Name1
+PairName2 -> Name2
+```
+
+Data_Name:
+```
+NameID -> ID
+ID -> Name
+```
+
+Data_IsIN:
+```
+Chapter_DenyList -> DenyList
+```
+
+data_unit_all:
+```
+UnitDataID -> UnitID
+UnitNameShort -> NameShort
+UnfocusedMove -> Unfocused
+FocusedMove -> Focused
+NumberOfWeapons -> NumWeapons
+NumberOfDanmaku -> NumDanmaku
+EquipSlots -> Equips
+UnitSpriteIcon -> UnitSprite
+FaceSpriteIcon -> FaceSprite
+NumberOfAbilities -> NumAbilities
+UnitBGM -> BGM
+NumberOfUnits -> NumUnits
+ShieldDefense -> Shield
+UnitDeath -> DeathSprite
+UnitName -> Name
+UnitPairName -> PairName
+UnitRace -> Race
+HPIncrement -> HPAdd
+MPIncrement -> MPAdd
+MobilityIncrement -> MobilityAdd
+ArmorIncrement -> ArmorAdd
+UpgradeGrowthRank -> Growth
+```
+
+data_char_all:
+```
+CharDataID -> CharID
+CharName -> Name
+SpiritID1 -> ID1
+SpiritID2 -> ID2
+SpiritID3 -> ID3
+SpiritID4 -> ID4
+SpiritID5 -> ID5
+SpiritID6 -> ID6
+SpiritLevel1 -> Lv1
+SpiritLevel2 -> Lv2
+SpiritLevel3 -> Lv3
+SpiritLevel4 -> Lv4
+SpiritLevel5 -> Lv5
+SpiritLevel6 -> Lv6
+SpiritCost1 -> Cost1
+SpiritCost2 -> Cost2
+SpiritCost3 -> Cost3
+SpiritCost4 -> Cost4
+SpiritCost5 -> Cost5
+SpiritCost6 -> Cost6
+```
+
+data_char_skill_all:
+```
+CharDataID -> CharID
+Level1 -> Lv1
+Level2 -> Lv2
+Level3 -> Lv3
+Level4 -> Lv4
+Level5 -> Lv5
+Level6 -> Lv6
+```
+
+Data_Skills:
+```
+PPCostIncrement -> PPCostAdd
+SkillKind -> Kind
+```
+
+- Restore Meditation Slash missing effects. The enemy sprite is now split at the end of the animation. However, this still needs improvement as this effect can break against larger sprites.
+
+- Fix event bug in Chapter 43 where the game hardcoded the weapon position to be used for the Scarlets cutscene attack. The game will look for Remilia's 6th weapon in her internal weapon list. Because the addOn system now inserts weapons before Scarlets, it's possible that Remilia will use a different weapon than Scarlets, and the game can either play out a different animation or crash.
+
+- PSes:
+  - [RESTORED] Omikuji Bomb
+  ```
+  Modifies damage dealt by a factor ranging from -20% to +25%.
+  This effect is randomly set at the beginning of each turn.
+  ```
+  - [RESTORED] Black-and-White Judgment (FMW4)
+  ```
+  Rounds up damage dealt and Accuracy rate for both units in Eiki's team.
+  Damage dealt is rounded up to the nearest multiple of 1000,
+  while Accuracy rate is rounded up to the nearest multiple of 10%.
+  ```
+  - [RESTORED] Black-and-White Judgment (OG CB)
+  ```
+  For one turn, the unit's damage will be fixed at 5000 points.
+  Does not work on units with Special Resistance.
+  (Usable 2 times.)
+  ```
+  - [RESTORED] Mark of the Wind
+  ```
+  Consume 30% Faith to cast Miracle on this unit.
+  (Usable 1 times.)
+  ```
+  - [RESTORED] Youkai Power Spoiler
+  ```
+  Replenishes 20 MP when the unit's team defeats an enemy.
+  Sanae must be in the frontline for this skill to activate.
+  ```
+  - [RESTORED] Fixed Stars on Earth
+  ```
+  All squares in the 1/2/3-square radius around the unit are set to Day terrain.
+  The terrain modifier also affects Wriggle's partner.
+  Does not affect unit and weapon Night Ratings that are at least S.
+  ```
+  - [RESTORED] Devil's Contract - Remilia
+  ```
+  Grants a buff that sets a unit's Night Terrain Rating to S,
+  in exchange for 80% of their max HP.
+  (Usable 2 times.)
+  ```
+    - This PS used to only set unit Night Terrain Rating to A. It has now been buffed to set it at S.
+ 
+- Restore FMW1 dialogue for the Kedama enemy. All dialog from the original 1.1.2 FMW1 translation has been ported over. However, certain dialog lines are currently disabled due to the game missing certain battle conditions to check when playing these lines. This will be restored in the future.
+  - Again, credits to Deranged/Gensokyo.org for translating these lines in FMW1.
+
 ###1.2.2.6b hotfix###
 - Finally fix the looping modding menu bug when text/number edit mods were selected when in fullscreen with a controller. This is a strange bug that occurs with the get_string function, controller use, and the fullscreen function. With all active at the same time, the game will keep repeating controller select inputs to constantly enter the input window, thus causing the infinite loop. Perhaps there is an internal bug with get_string that's causing the controller inputs to be spammed constantly, but I have still not found the direct root cause, instead it's only the components.
   - Very rarely, I've seen the infinite loop bug come back once or twice, but I was able to get through those cases by clicking on the main game menu to refocus the window, then Alt+Enter to disable fullscreen (or multiple times if needed), then tried pressing OK on the input window again. This can happen at times due to the unstable implmentation of the input window in Gamemaker's engine; there's definitely room to improve here.
@@ -520,6 +706,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
