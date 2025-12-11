@@ -1,3 +1,23 @@
+###1.2.2.6d###
+- Update to data_unit_all for the following fields that are set to read character data.
+data_unit_all:
+NumUnits -> NumChars
+Unit1 -> Char1
+Unit2 -> Char2
+Unit3 -> Char3
+
+- Implement modularization for addOn system. Now, there's no need to compile all your JSONs into a single file. You can rename your addOn files to whatever you want and drop them in the folders with the same names as your previous addOn files. This makes the system far more potent to exchange and stack other's changes within a single folder rather than file.
+  - Because the folder structure is different, you will need to redownload the addOn folder and just rename your changed files and put them in the corresponding folders.
+
+- Add replacement functionality to supported AddOns. Setting "Replace" to true in certain JSONs will allow you to replace previous data rows in the data files. Usually the value the system looks to replace is based on a unique identifier, such as ID or Weapon Demo. Will follow up with the indexing keys that determine what needs to be present for the system to replace a previous row.
+
+- Add Templates to repo that provide the basic format and expected values of addOns JSONs.
+
+- Toggle: Fix barrier display bug during animations when using LayeredFS to override the vanilla files. The wildcard matching for barrier sprite effects was too loose and caused characters with similar prefixes in the characterID to have unexpected barrier effects. Specifically, Yuuka would have Yukari's Distortion Barrier effect when she defended, since both characters have a common prefix for their characterID: Yuka and Yukari. Additionally, the mod fixes another bug where mismatches between unit_code/character_code would cause the wrong barrier effect to play. Specifically, upgraded Reimu has unit_code `ReimuR` but the barrier display function checks for character_code, which is `Reimu` in this case. As a result, the pre-upgrade barrier is displayed for upgraded Reimu.
+  - You may find without loading in the barrier graphics files with LayeredFS in `data3`, certain barrier effects will be missing. This is because the names of these barriers are now hardcoded in the `data3.meta` metadata file, which does not perform any wildcard matching for the vanilla files. If certain barriers are missing, you can either load the right barrier effects through LayeredFS or turn off this mod to fallback to the default vanilla barriers displayed by the game.
+
+- Fix Evil Light Charge animation crashing again on certain animations that filled the screen with multiple objects. The animations now recreates the object that the game expects to be present when the Evil Eye moves to the opposite site of the field.
+
 ###1.2.2.6c###
 - Update addOn JSON format to optimize file size and correct previous fields that were incorrect labels for the dialog conditions. This does mean that previous dialog text and meta files need to be updated to the new format to be read correctly by the game. This should be a simple find-and-replace, but I will list all the fields that were changed in all addOns. Ideally, redownload the latest addOns and add your changes back into each file as needed.
 
@@ -706,6 +726,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
