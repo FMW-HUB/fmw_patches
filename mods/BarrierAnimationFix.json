@@ -1,0 +1,1 @@
+{"Name":"barrierFix","Desc":"Fix file wildcard matching and unit_code\/char_code\nmismatches causing the game to display barriers\nincorrectly for certain units.\n\nRecommended to be enabled alongside\ngraphic files loaded through LayeredFS\n\nDisable this mod if barrier graphics are not\nappearing for certain units","Value":false,"Type":0.0}
