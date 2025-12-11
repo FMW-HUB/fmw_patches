@@ -21,6 +21,8 @@ Unit3 -> Char3
 
 - Fix Evil Light Charge animation crashing again on certain animations that filled the screen with multiple objects. The animations now recreates the object that the game expects to be present when the Evil Eye moves to the opposite site of the field.
 
+- Remove redundant DialogIDs in the meta files for this repo. I reviewed the file format and dialog workflow, and found that there's no need to keep duplicate DialogIDs in the meta files. From now on, you only need to put unique DialogIDs for each group of dialog you want to insert through addOns.
+
 ###1.2.2.6c###
 - Update addOn JSON format to optimize file size and correct previous fields that were incorrect labels for the dialog conditions. This does mean that previous dialog text and meta files need to be updated to the new format to be read correctly by the game. This should be a simple find-and-replace, but I will list all the fields that were changed in all addOns. Ideally, redownload the latest addOns and add your changes back into each file as needed.
 
@@ -729,6 +731,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
