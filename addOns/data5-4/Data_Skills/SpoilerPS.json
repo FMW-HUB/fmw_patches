@@ -1,0 +1,1 @@
+{"Data_Skills":{"Active":true,"AddOn":[{"Enabled":true,"Kind":2,"ID":"SPOILER","EF":"MP_GET","Name":"Youkai Power Spoiler","Icon":"Cure","MaxLevel":0,"VAL1":"|20|","VAL2":"","VAL3":"","Count":"","Target":"","Text":"Replenishes <VAL1> MP when the unit's team defeats an enemy.\nSanae must be in the frontline for this skill to activate.","PPCost":0,"PPCostAdd":0}]}}

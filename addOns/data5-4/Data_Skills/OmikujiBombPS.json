@@ -1,0 +1,1 @@
+{"Data_Skills":{"Active":true,"AddOn":[{"Enabled":true,"Kind":2,"ID":"OMIKUJI","EF":"OMIKUJI","Name":"Omikuji Bomb","Icon":"Damage","MaxLevel":0,"VAL1":"|20|","VAL2":"|25|","VAL3":"","Count":"","Target":"","Text":"Modifies damage dealt by a factor ranging from -<VAL1>% to +<VAL2>%.\nThis effect is randomly set at the beginning of each turn.","PPCost":0,"PPCostAdd":0}]}}

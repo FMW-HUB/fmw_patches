@@ -1,0 +1,1 @@
+{"Data_Skills":{"Active":true,"AddOn":[{"Enabled":true,"Kind":2,"ID":"FAITH_SPIRIT","EF":"FAITH_SPIRIT","Name":"Mark of the Wind","Icon":"Light","MaxLevel":0,"VAL1":"|30|","VAL2":"|Miracle|","VAL3":"","Count":"|1|","Target":"SELF_PLAYER","Text":"Consume <VAL1>% Faith to cast Miracle on this unit.\n(Usable <COUNT> times.)","PPCost":0,"PPCostAdd":0}]}}
