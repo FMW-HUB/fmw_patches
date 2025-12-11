@@ -1,10 +1,13 @@
 ###1.2.2.6d###
 - Update to data_unit_all for the following fields that are set to read character data.
+
 data_unit_all:
+```
 NumUnits -> NumChars
 Unit1 -> Char1
 Unit2 -> Char2
 Unit3 -> Char3
+```
 
 - Implement modularization for addOn system. Now, there's no need to compile all your JSONs into a single file. You can rename your addOn files to whatever you want and drop them in the folders with the same names as your previous addOn files. This makes the system far more potent to exchange and stack other's changes within a single folder rather than file.
   - Because the folder structure is different, you will need to redownload the addOn folder and just rename your changed files and put them in the corresponding folders.
@@ -726,6 +729,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
