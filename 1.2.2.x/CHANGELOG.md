@@ -231,12 +231,12 @@ SkillKind -> Kind
 
 ###1.2.2.6###
 - PSes:
-  - [NEW] Noblesse Oblige
+  - [RESTORED] Noblesse Oblige
   ```
   For one turn, grants the ability Salamander Shield to all adjacent units.
   This effect also applies to the unit's partner. (Usable 2 times.)
   ```
-  - [NEW] Boundary of Offense and Defense
+  - [RESTORED] Boundary of Offense and Defense
   ```
   For one turn, reverses the attack order for all battles between allied and enemy units.
   Additionally, Player Support Attacks still only occur during the Player Phase,
@@ -731,6 +731,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
