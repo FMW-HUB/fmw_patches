@@ -27,7 +27,7 @@
 
 
 - Add guardrails to the Debug Menu when executing the Stage End (Internal to the debug menu) and Forced Game Over (newly added) commands only in the Player Phase. To specify, there is a Stage End command that used to be activated by pressing the View button (the same button used to open the GlobalMenu). However, this would bug out if you pressed it and then backed out of the Debug Menu withou pressing confirm. Now, there is a new window prompt that asks the player whether they would like to immediately end and clear the stage.
-  - With the current changes, the button mappings for the Stage End and Forced Game Over commands have been changed:
+  - With the current changes, the button mappings for the Stage End and Forced Game Over commands have been changed; these can be executed while the cursor is not on the confirm button on the Debug Menu:
     - View button: Execute a Forced Game Over with a window prompt. If "Yes" is selected, the game will immediately transition to the Game Over screen and the chapter will restart.
     - Menu (or the button combined with L+R for a soft reset) button: Execute a Stage End with a window prompt. If "Yes" is selected, the game will move to the Stage Clear event dialog, then as usual, the Stage Clear results screen will come up, and the player will transition to the Intermission.
    
