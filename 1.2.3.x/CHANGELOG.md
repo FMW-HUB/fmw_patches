@@ -10,6 +10,8 @@
 
 - Add FMW1 demo Half-ghost animation script. You can see this animation by overriding an animation for a weapon with the internal name `hanrei_old`.
 
+- Enable latent stat growth curves for `ATP_LATE`, `MGR_LATE`, `ALL_LATE`. These can now be used with other currents from this version forward.
+
 - Fix blue aura not being drawn in front of enemy during Eternal Meek if the enemy has too large of a sprite.
 
 - Fix gamebreaking quicksave bug for Noblesse Oblige caused by passing an incompatible text data type instead of a number for tracking the barrier effect for units on adjacent tiles. Please redownload the `NoblessePS.json` AddOn in `Data_Skills` and update to 1.2.3.2 to fix this bug.
