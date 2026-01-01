@@ -1,3 +1,6 @@
+###1.2.3.2###
+- Implement addOn support for Data_Change in data5-4. Make sure to remove the dummy Data_Change addOn in your current files since the game will now try to read from the Data_Change folder. The new addOn `Form_FlagID_Fix.json` uploaded to this repo is an important one: This fixes the Route B form availability bug by rewriting the Data_Change file and internal game logic for checking the ROUTE_B and Classic form flags before proceeding to update either character.
+
 ###1.2.3.1###
 - Implement addOn support for Data_Spirits in data5-4. Make sure to remove the dummy Data_Spirits addOn in your current files since the game will now try to read from the Data_Spirits folder.
   - Add Data_Spirits addOn to display N/A spirits for units that the "NA" spirit in their character data. The Evil Eye, Kedama, and Makai Insect char addOns in data_char_all have been updated to use the NA spirit.
