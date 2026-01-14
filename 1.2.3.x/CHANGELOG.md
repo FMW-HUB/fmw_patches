@@ -1,6 +1,11 @@
 ###1.2.3.2###
 - Implement addOn support for Data_Change in data5-4. Make sure to remove the dummy Data_Change addOn in your current files since the game will now try to read from the Data_Change folder. The new addOn `Form_FlagID_Fix.json` uploaded to this repo is an important one: This fixes the Route B form availability bug by rewriting the Data_Change file and internal game logic for checking the ROUTE_B and Classic form flags before proceeding to update either character.
 
+- Implement addOn support for `_anime.json` in dat. This file defines the frame chroreography for all sprite resource files in `data2-2` and `data2-3`. This is required when adding new files in `data2-2` and `data2-3` that will be used for any animation in the game. For the list of fields and what they do:
+  - Top level and "src" fields is usually your sprite file name without the extension.
+  - "n_frames" is the number of frames your sprite strip image is split into. 
+  - "index" is the list of frames the game will play in order at each frame timestep.
+
 - Implement LayeredFS loading for idle sprites, field sprites (uniticon), and spirit data file resources. Replace these in the following folders.
   - For idle sprites, replace the files in data2-2.
   - For field sprites, replace the files in data8.
