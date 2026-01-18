@@ -207,7 +207,7 @@ SkillKind -> Kind
     - This PS used to only set unit Night Terrain Rating to A. It has now been buffed to set it at S.
  
 - Restore FMW1 dialogue for the Kedama enemy. All dialog from the original 1.1.2 FMW1 translation has been ported over. However, certain dialog lines are currently disabled due to the game missing certain battle conditions to check when playing these lines. This will be restored in the future.
-  - Again, credits to Deranged/Gensokyo.org for translating these lines in FMW1.
+  - Again, credits to Deranged/Tatari/Sensei-Hanzo/Gensokyo.org/Pooshlmer for translating these lines in FMW1.
 
 ###1.2.2.6b hotfix###
 - Finally fix the looping modding menu bug when text/number edit mods were selected when in fullscreen with a controller. This is a strange bug that occurs with the get_string function, controller use, and the fullscreen function. With all active at the same time, the game will keep repeating controller select inputs to constantly enter the input window, thus causing the infinite loop. Perhaps there is an internal bug with get_string that's causing the controller inputs to be spammed constantly, but I have still not found the direct root cause, instead it's only the components.
@@ -268,7 +268,7 @@ SkillKind -> Kind
   - Download the addOns folder and place it inside your user FMW app data folder for `fmw_dosd` (`C:\Users\<YOUR_USERNAME>\AppData\Local\fmw_dosd\`).
 
 - Restore FMW1 dialogue for the Evil Eye enemy. This was accomplished again through the `addOn` system. All dialog from the original 1.1.2 FMW1 translation has been ported over.
-   - Credits to Deranged/Gensokyo.org for translating these lines in FMW1.
+   - Credits to Deranged/Tatari/Sensei-Hanzo/Gensokyo.org/Pooshlmer for translating these lines in FMW1.
 
 - With the `addOn` system, I have added sample entries for enemy units that can be used on the player side. Added the `Kedama`, `Evil Eye`, `Kappa`, and `Makai Insect`. By default, enabling these units on the player side is disabled. To enable these units, open the `Data_IsIN` in `data5-4`, `data_unit_all` in `data4`, and `data_char_all` in `data4` addOn files, find each json entry that marks the patch entry as `"Enabled":false`, and change the false to true. 
   - A critical warning, because new units can be added, this will almost certain modify your saves in new, unintended ways. It shouldn't crash because the changes still follow the save format of the vanilla game; however, new data will be added to those saves that were not designed in mind. Always make sure to keep a backup of your saves.
@@ -731,6 +731,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 

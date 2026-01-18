@@ -1,3 +1,42 @@
+###1.2.3.2###
+- Implement addOn support for Data_Change in data5-4. Make sure to remove the dummy Data_Change addOn in your current files since the game will now try to read from the Data_Change folder. The new addOn `Form_FlagID_Fix.json` uploaded to this repo is an important one: This fixes the Route B form availability bug by rewriting the Data_Change file and internal game logic for checking the ROUTE_B and Classic form flags before proceeding to update either character.
+
+- Implement addOn support for `_anime.json` in dat. This file defines the frame chroreography for all sprite resource files in `data2-2` and `data2-3`. This is required when adding new files in `data2-2` and `data2-3` that will be used for any animation in the game. For the list of fields and what they do:
+  - Top level and "src" fields is usually your sprite file name without the extension.
+  - "n_frames" is the number of frames your sprite strip image is split into. 
+  - "index" is the list of frames the game will play in order at each frame timestep.
+
+- Implement LayeredFS loading for idle sprites, field sprites (uniticon), and spirit data file resources. Replace these in the following folders.
+  - For idle sprites, replace the files in data2-2.
+  - For field sprites, replace the files in data8.
+  - For spirit sprites, replace the files in data8.
+
+- Implement custom drawn modding UI input screen instead of using the synchronous `get_string` and `get_integer` functions. This should eliminate any further infinite loop bugs from inputting new numerical/text values in the modding menu.
+
+- Add FMW1 demo Half-ghost animation script. You can see this animation by overriding an animation for a weapon with the internal name `hanrei_old`.
+
+- Enable latent stat growth curves for `ATP_LATE`, `MGR_LATE`, `ALL_LATE`. These can now be used with other units from this version forward.
+
+- Fix blue aura not being drawn in front of enemy during Eternal Meek if the enemy has too large of a sprite.
+
+- Fix gamebreaking quicksave bug for Noblesse Oblige caused by passing an incompatible text data type instead of a number for tracking the barrier effect for units on adjacent tiles. Please redownload the `NoblessePS.json` AddOn in `Data_Skills` and update to 1.2.3.2 to fix this bug.
+
+- Fix Meditation Slash and Eternal Meek animations failing to completely split enemy sprite in half for sprites that are larger than 128x128 pixels.
+
+- Fix the floatmenu text positioning displaying "Focus/Switch/Unfocus" on the map. There is no longer any redundant whitespace between text and button icons, and the UI now matches up similarly to the JPN version.
+
+- Fix screen darkening during support action selection not covering the whole screen as it should due to a x-position scaling bug.
+
+- Pre-allocate 12 slots in memory instead of 11 for the nested weapon availability list to accommodate Toyohime's quantum superpositioning technique opening 11 support action slots in the Battle Info screen. This fixes the crash that can happen if say, 11 support attackers are actively available for selection in the Battle Info screen.
+
+- Fix Weapon ATK bug that caused Limiter Release Utsuho's weapon list to become scrambled out of order if an item that boosted Weapon ATK was equipped on her. This is a simple fix to call the sort weapon function after Limiter Release is activated.
+
+- Fix Radiator Pack PS bug that did not lower Heat costs when equipped on Utsuho. Originally, Heat costs were directly read from the Weapon Properties section. However, these were later refactored into the Special effects field for weapons that would apply unique effects depending on the weapon. The internal game logic had not updated to account for this refactoring; this fix applies the analogous change to read from the Special effects field to lower Heat costs.
+
+- Disable the FMW4Youmu custom character for NG+ carryover as she could cause currently unknown crashes.
+
+- Toggle: Restore the Weapon Range of Waveguider Fan to the version present in early FMW4 patches. Enjoy a MAP attack that completely outranges High Giga Cannon Giga Flare by default.
+
 ###1.2.3.1###
 - Implement addOn support for Data_Spirits in data5-4. Make sure to remove the dummy Data_Spirits addOn in your current files since the game will now try to read from the Data_Spirits folder.
   - Add Data_Spirits addOn to display N/A spirits for units that the "NA" spirit in their character data. The Evil Eye, Kedama, and Makai Insect char addOns in data_char_all have been updated to use the NA spirit.
