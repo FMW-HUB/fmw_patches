@@ -1,3 +1,55 @@
+###1.2.3.3###
+- Implement LayeredFS loading for unit portraits.
+  - To replace unit portraits, create a new `data2-1` folder in your `modData` folder and insert your portraits respective to the character you want to modify using the filename pattern `face_<CHAR_ID><PORTRAIT_ID>.png`. For example, `face_Nitori0a.png` is a valid replacement.
+
+- Implement folder searching for the `mods` folder. Now you can easily organize all the json mod files into multiple folders that can be named in whatever way you'd like. This only searches through 1 subfolder level at the moment. For example, you can make a folder called `AudioVisual` and place it in your `mods` folder, then move your json files into the `AudioVisual` folder. Your folder structure would then look like `mods/AudioVisual/*.json` for your files. The `mods` folder in the repo has been updated with default folders; from now on, any newer mod that is developed will be organized into these folders. Once you download any of these json files, feel free to organize them however you'd like.
+  - There is one small exception: The `ChangeArmyName.json` mod needs to be put in this folder path in order to update properly: `mods/Visual/ChangeArmyName.json`. In the future, this will be updated to not require an explicit folder path.
+  - Use `LB` and `RB` in the modding menu to cycle through each page that corresponds to one of your folders in `mods`.
+ 
+- [Toggle|Bugfixes] Fix animation choreography for spirit casting. Originally, spirit animations were played at 30 FPS by default in the OG FMW games. The sound effects for these animations were made to match this frame speed to sync the timing correctly in the choreography. However, CB now plays spirit animations at 45 FPS. Often at times, you will find that the spirit animation completes before the SE has finished playing. With this mod, the frame speed is now toggleable to be restored to the original 30 FPS. In addition, when the spirit casting animation is sped up, the mod retains CB's original speedup at 45 FPS, so you will not be compromised with slower gameplay animations.
+
+- [Toggle]Mechanics] Restore the ability for enemies to deal critical hits. Additionally, the enemy's final critical rate is halved in the critical calculations like in most versions of the OG FMW games.
+
+- [Toggle]Mechanics] Restore MP cost for movement in Air Terrain. The Shimenawa also regains its original effect to nullify MP cost for movement in Air.
+
+- PSes (Update your addOns folder for `Data_Skills` and `data_char_skill_all`):
+  - [NEW|Alice] Trip Wire L1/2/3/4
+  ```
+  Increases Seeker Wire's ATK by <100|200|300|400> and Range by +<1|1|2|2>.
+  Lv. 2/3: In addition, Alice can chain an extra 1 doll in Seeker Wire's path.
+  Lv. 4: In addition, Alice can chain an extra 2 dolls in Seeker Wire's path. Finally, increases the number of uses of Create Doll (Hourai) by +1.
+  ``` 
+  - [RESTORED|Aya|FMW4] Sarutahiko's Guidance
+  ```
+  At 120+ Power, unit's pair gains +10% evasion rate and +1 Unfocused Move.
+  ```
+  - [RESTORED|Kogasa|FMW4] Nanny's Parasol
+  ```
+  50% of the damage taken by the frontline unit is shared with the backline unit.
+  This applies to both units in the pair but does not work during Graze.
+  Ineffective if the backline unit is shot down or the shared damage exceeds the backline unit's HP.
+  ```
+
+
+- Add special functionality for this prepended text `***` for `WepShape` property in `data_weapon_all.txt`. By adding `***` to the beginning of the WepShape text that defines the range/type of a MAP attack, you can specify units in the `WepEffect` property to exclude from the MAP attack targetting. Basically, this will let you have fine-grained control for Friendly Fire on specific units.
+
+- Add FMW1 demo Meditation Slash animation script. Use the internal name `danmeiken_old` to see it in your modded weapon files.
+
+- Add FMW1 Beta Flight of Idaten animation script for Chen. Internal Name: `idaten_old`
+
+- Add FMW1 Beta Bakeneko [Chen] animation script. Internal name: `Chen_old`
+
+- Fix massive legacy FMW4 weapon paging bug for characters with 9 or more weapons.
+  - In summary, FMW4 used to accommodate large weapon lists (9+ weapons) in the UI by splitting the weapon status into multiple pages displaying 8 weapons in the current viewed chunk. However, CB removed the paging functionality in the UI and now displays all weapons on a single page. Unfortunately, the internal paging logic that organizes the internal weapon lists was not updated to account for this.
+  - This bug is extremely detrimental to Reimu/Marisa, who in their final forms have more than 8 weapons and heavily suffer from this bug. This bug is responsible for unusual interactions when selecting weapons. For example, sometimes you want to select the strongest weapons for Reimu/Marisa, the game will autoselect the incorrect weapons and direct the cursor to the top of the screen. This is the game trying to invoke the legacy paging logic by resetting the cursor to the top as if the player proceeded to view the next weapon page.
+  - In addition, there's now no logic to reset the internal index pointer that's used in the Support Attack weapon UI. If you go in and out of the Support Attack weapon UI menu with a character thats affected by this bug, you can keep infinitely increasing the index pointer and cause and array out-of-bounds error when returning to the main character's weapon selection.
+  - In the modding plane, it will be simply unsustainable to leave this bug alone, as more weapons are added to new custom characters. So, it is a must to solve this bug at the current time. A future enhancement will also revamp the paging logic to allow more weapons to be displayed in-game.
+
+
+- Fix SE choreography in Proto Malice Cannon's animation to only play the SE for Alice's laser and Marisa's Magic Missiles when they've finished speaking their preliminary lines.
+
+- Fix background color bug for animation for Sakuya's World not resetting to the default black background. Some animations in the game set the background color without reverting it once the animation completes. This could cause Sakuya's World to display incorrect background colors that would override the grayscale image displayed after the time stop flash. Thus, the animation for Sakuya's World now always returns the background color to the default black to avoid this bug. Specifically, Remilia's Red the Nightless Castle was a relevant culprit for this bug that would cause Sakuya's World to become completely opaque and white.
+  
 ###1.2.3.2###
 - Implement addOn support for Data_Change in data5-4. Make sure to remove the dummy Data_Change addOn in your current files since the game will now try to read from the Data_Change folder. The new addOn `Form_FlagID_Fix.json` uploaded to this repo is an important one: This fixes the Route B form availability bug by rewriting the Data_Change file and internal game logic for checking the ROUTE_B and Classic form flags before proceeding to update either character.
 
