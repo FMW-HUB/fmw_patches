@@ -1,1 +1,1 @@
-{"Name":"isTest","Value":false,"Type":0.0,"Desc":"Enable Debug Menu"}
+{"Name":"isTest","Value":false,"Type":0.0,"Desc":"Enable Debug Menu\n\nNOTE: Make frequent backup saves.\nThe Debug Menu may not be fully stable when\nmodifying in-game save values and may crash.\nAdditionally, certain Debug Menu actions like the\nChapter Select may irreversibly modify your units;\nplease be cautious when using this tool."}
