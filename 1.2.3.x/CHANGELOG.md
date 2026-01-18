@@ -2,7 +2,7 @@
 - Implement LayeredFS loading for unit portraits.
   - To replace unit portraits, create a new `data2-1` folder in your `modData` folder and insert your portraits respective to the character you want to modify using the filename pattern `face_<CHAR_ID><PORTRAIT_ID>.png`. For example, `face_Nitori0a.png` is a valid replacement.
 
-- Implement folder searching for the `mods` folder. Now you can easily organize all the json mod files into multiple folders that can be named in whatever way you'd like. This only searches through 1 subfolder level at the moment. For example, you can make a folder called `AudioVisual` and place it in your `mods` folder, then move your json files into the `AudioVisual` folder. Your folder structure would then look like `mods/AudioVisual/*.json` for your files. The `mods` folder in the repo has been updated with default folders; from now on, any newer mod that is developed will be organized into these folders. Once you download any of these json files, feel free to organize them however you'd like.
+- Implement folder searching for the `mods` folder. Now you can easily organize all the json mod files into multiple folders. This only searches through 1 subfolder level at the moment. For example, you can make a folder called `AudioVisual` and place it in your `mods` folder, then move your json files into the `AudioVisual` folder. Your folder structure would then look like `mods/AudioVisual/*.json` for your files. The `mods` folder in the repo has been updated with default folders; from now on, any newer mod that is developed will be organized into these folders. Once you download any of these json files, feel free to organize them however you'd like.
   - There is one small exception: The `ChangeArmyName.json` mod needs to be put in this folder path in order to update properly: `mods/Visual/ChangeArmyName.json`. In the future, this will be updated to not require an explicit folder path.
   - Use `LB` and `RB` in the modding menu to cycle through each page that corresponds to one of your folders in `mods`.
  
@@ -10,7 +10,28 @@
 
 - [Toggle]Mechanics] Restore the ability for enemies to deal critical hits. Additionally, the enemy's final critical rate is halved in the critical calculations like in most versions of the OG FMW games.
 
-- [Toggle]Mechanics] Restore MP cost for movement in Air Terrain. The Shimenawa also regains its original effect to nullify MP cost for movement in Air.
+- [Toggle|Mechanics] Restore MP cost for movement in Air Terrain. The Shimenawa also regains its original effect to nullify MP cost for movement in Air.
+
+- [Toggle|Mechanics] Restore the Revenge Storage mechanic present in the original games. The Revenge damage multiplier can be retained on a frontline unit as long as the unit avoids attacking. This also applies to Support Attacks. Works like a fusion between FMW1 and FMW3 Revenge Storage.
+  - Keep in mind, this follows the behavior of the mechanic in the orginal games. Suspend Saves do not track stored Revenge multipliers; stored revenge boosts will be wiped after reloading. Additionally, the Revenge multiplier will now show in the damage calculation if the stored Revenge boost is greater than 0.
+  - If you would like a demonstration to see how overpowering this mechanic can be, take a look at this strategy: https://www.youtube.com/watch?v=x97mGXd3OSs
+ 
+- [Toggle|Mechanics] Nullify Graze damage when Bunshin or other similar effects activate. This restores Bunshin functionality to the version present in FMW1.
+
+- [Toggle|Mechanics] Restore functionality for the Persist (Grit) spirit to trigger on Graze. This allows the player to toggle between the spirit's functionality in FMW1-3 vs. FMW4 and beyond.
+
+- [Number|Mechanics] Modify barrier behavior when Grazing attacks on the player side. Ther are two modes to input for this mod.
+  - Mode 0 is the current default behavior for barriers originating from PC CB: Barriers can activate and consume MP in all calculated damage scenarios including Graze, Hit, and Defend
+  - Mode 1 is the original behavior in FMW1-4 for barriers: Barriers only activate and consume MP on Hit and Defend
+  - The projected barrier sprite in the Battle Info screen only appears when the unit's barrier can successfully nullify/reduce damage; this projected forecast assumes the unit is unfocused. When selecting Mode 1, please be wary of this.
+ 
+- [Toggle|Modifiers] Set all event flags to true to unlock Lily Black, on-field Akyu, and the classic forms for Reimu and Marisa. If this mod is turned on, any secret unit event will always grant you the unit at the end regardless of any other circumstances. Disable the mod to return to the default behavior for checking these event flags
+
+- [Toggle|Visual] Toggle displaying damage number graphics in animation.
+
+- [Toggle|Visual] Toggle displaying messages in animation, like Barrier names, Critical Hits, Buffs/Debuffs, etc.
+
+- [Toggle|Visual] Restore the unused FMW4 spirit casting animations for Renew and Revive. 
 
 - PSes (Update your addOns folder for `Data_Skills` and `data_char_skill_all`):
   - [NEW|Alice] Trip Wire L1/2/3/4
@@ -45,10 +66,25 @@
   - In addition, there's now no logic to reset the internal index pointer that's used in the Support Attack weapon UI. If you go in and out of the Support Attack weapon UI menu with a character thats affected by this bug, you can keep infinitely increasing the index pointer and cause and array out-of-bounds error when returning to the main character's weapon selection.
   - In the modding plane, it will be simply unsustainable to leave this bug alone, as more weapons are added to new custom characters. So, it is a must to solve this bug at the current time. A future enhancement will also revamp the paging logic to allow more weapons to be displayed in-game.
 
+- Restore animated openings for the FMW3/4/Mehko arcs and the text scrolling speed to PC CB's speed.
+  - The restored speed change was made to reduce text shimmering due to non-integer scroll speed rate implemented in Switch and beyond. In addition, the screen has been darkened to match the shade in the original FMW4 and PC CB. 
 
 - Fix SE choreography in Proto Malice Cannon's animation to only play the SE for Alice's laser and Marisa's Magic Missiles when they've finished speaking their preliminary lines.
 
 - Fix background color bug for animation for Sakuya's World not resetting to the default black background. Some animations in the game set the background color without reverting it once the animation completes. This could cause Sakuya's World to display incorrect background colors that would override the grayscale image displayed after the time stop flash. Thus, the animation for Sakuya's World now always returns the background color to the default black to avoid this bug. Specifically, Remilia's Red the Nightless Castle was a relevant culprit for this bug that would cause Sakuya's World to become completely opaque and white.
+
+- Fix additional Private Square bugs.
+  - Initial speed is now set before Sakuya starts dodging in the animation. Previously, it was possible for her to inherit the speed modified in certain other animations. For example, the Torpedo attack from the Kappas would set her speed below 1, causing her to dodge very slowly during Private Square.
+  - Fix Private Square dodge hanging on certain animations that generated bullet/blank objects. These animations include Persuation Needle, Homing Amulet, and Magic Missile, amongst others. Due to the timing of the time stop pause, some bullet/blank objects may fail to update their speed variables once Private Square completes. The animations above check to see that all bullet/blank instances are destroyed, which won't happen if these instances are still stuck at 0 speed. The fix now goes over each bullet/blank instance in Private Square and explicitly updates them as needed.
+ 
+- Fix crash that would happen when only text was inputted into number mods in the modding menu.
+
+- Restore the lick sound effect in the Doofy Ghost's Tongue attack.
+
+- Fix leftover Yuuka prone sprite that would remain at the end of the animation for Flower Master of the Four Seasons.
+
+- Fix crash that would occur during assist/FPM attacks for the old animation for Half-Ghost due to the Half-Ghost object being prematurely removed. Also fix enemy sprite moving unusually by modifying sprite transparency instead.
+
   
 ###1.2.3.2###
 - Implement addOn support for Data_Change in data5-4. Make sure to remove the dummy Data_Change addOn in your current files since the game will now try to read from the Data_Change folder. The new addOn `Form_FlagID_Fix.json` uploaded to this repo is an important one: This fixes the Route B form availability bug by rewriting the Data_Change file and internal game logic for checking the ROUTE_B and Classic form flags before proceeding to update either character.
