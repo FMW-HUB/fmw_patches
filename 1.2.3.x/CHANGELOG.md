@@ -1,4 +1,69 @@
 ###1.2.3.3###
+
+- The first new custom frame for a character has been implemented. Introducing *Alice Margatroid (Hourai Equipment)*, an unused character frame in FMW3 with now-completed data in this modding version.
+  - AliceHE is a highly aggressive character with a greater emphasis on maneuvering dolls and utilizing them for her special gimmicks. She benefits immensely from strong positioning, and with the changes to her weapons, she more often than not has success getting up close to an enemy to burst them down, while fielding the dolls around her for support.
+  - Changes:
+    - 1st change: Return Inanimateness is now the Assist Attack. Mostly has same properties as Artful Sacrifice, but with less Ammo and Ignore Size added.
+    - 2nd change: Doll's War has a +450 Weapon Power boost, +15% crit, and double the Ammo over the base version. Attack is now Ranged instead of Melee at 1-4.
+    - 3rd change: Seeker Wire, the most technical MAP attack in the game. Weapon stats:
+      - ```
+        Kind: Ranged MAP Attack
+        Base Damage: 2500
+        Min Range: 1
+        Max Range: 5
+        Accuracy: 5%
+        Critical: 20%
+        Laser
+        Not Solid Round
+        Not Post-movement
+        Ammo Count: 1
+        MP Cost: 90
+        Minimum Required Power: 130
+        Sky: A
+        Land: A
+        Water: C
+        Night: A
+        Not Assist
+        Does not Pierce Barrier
+        Does not Ignore Size
+        MAP Range: Unique, orthogonal path based on regular unit movement
+        Special Effect:
+        Does not damage Doll units
+        Range increases if Doll units are within Max Range
+        Can chain up to 2 unique Doll units in path
+        Friendly Fire ON
+        ```
+      - Pathing logic for Seeker Wire will target whichever Doll is closest at each node. If 2 or more dolls are equidistant, then the internal logic will break ties by going in order of which Doll was summoned first. By just looking at the positioning of the dolls on the map in any given configuration without any previous knowledge of order, it should be mostly simple to tell where the path should go.
+    - 4th change: Straw Doll Kamikaze, AliceHE's finisher. A completely original attack that also a unique effect attached to it. As more dolls are summoned, the damage of the move is increased. Here's the weapon stats:
+      - ```
+        Kind: Ranged Attack
+        Base Damage: 3100
+        Min Range: 1
+        Max Range: 6
+        Accuracy: 15%
+        Critical: 30%
+        Not Laser
+        Not Solid Round
+        Not Post-movement
+        Ammo Count: 1
+        MP Cost: 0
+        Minimum Required Power: 130
+        Sky: A
+        Land: A
+        Water: C
+        Night: A
+        Not Assist
+        Pierces Barrier
+        Ignore Size
+        Damage increases depending on the number of Doll units at full HP
+	    Afterwards, applies Recoil damage to full HP Dolls
+        ```
+      - Damage of SDK increases by 7% for each doll at full HP. Any dolls that are not at full HP will not be considered. After the attack is executed, each full HP doll will take recoil damage akin to FMW1 Hourai's Self-Destruct effect and drop to 10 HP (any doll not at full HP will be spared from this effect).
+  - Enable the frame with the Data_Change addOn `AliceHouraiEquipment.json`. In this file, set the "Active" field at the top to true to make her available.
+  - This frame is only made available on certain chapters (excluding NG+) following Alice's upgrade order for Return Inanimateness and Doll's War for base form. You will first get her in Chapter 38 in her first update that does not have Malice Cannon. Once Marisa gets Malice Cannon from Chapter 40 and beyond, she will also get Malice cannon. 
+
+- Implement Giant Catfish as a custom unit addOn in the repo. Remember to enable the character by setting the "Enabled" field to `true` for his respective unit id (`Onamazu`) files in just the `Data_IsIN` addOn. His internal unit and character data already exists in the game.
+  
 - Implement LayeredFS loading for unit portraits.
   - To replace unit portraits, create a new `data2-1` folder in your `modData` folder and insert your portraits respective to the character you want to modify using the filename pattern `face_<CHAR_ID><PORTRAIT_ID>.png`. For example, `face_Nitori0a.png` is a valid replacement.
 
