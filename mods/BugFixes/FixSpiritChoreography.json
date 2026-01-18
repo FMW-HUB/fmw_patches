@@ -1,0 +1,1 @@
+{"Name":"spiritTiming","Desc":"Fix choreography for spirit animations to match up\nwith SE at original 1x frame speed.\nSpeed up will still play at CB's default 1.5x\nspeed to not compromise gameplay speed","Value":false,"Type":0.0}
