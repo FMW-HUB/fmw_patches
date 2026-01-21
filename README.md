@@ -1,5 +1,5 @@
 # fmw_patches
-WIP Patch Repository for Fantasy Maiden Wars Complete Box - Dream of the Stray Dreamer
+WIP Patch Repository for Fantasy Maiden Wars - DREAM OF THE STRAY DREAMER -
 
 Latest modding version: **1.2.3.3**
 
@@ -20,3 +20,13 @@ The new modding UI interface can be accessed from the GlobalMenu (where the manu
 - Future mod loader implementation
 - Plugins
 - Improve Patching Framework
+
+# Patch Information
+This repository contains xdelta binary patches.
+These patches do not include any copyrighted game data.
+
+You must own a legitimate, unmodified copy of the game to use them.
+
+Fantasy Maiden Wars - DREAM OF THE STRAY DREAMER - and all related assets are © their respective owners.
+
+This project is not affiliated with or endorsed by the developer or publisher.
