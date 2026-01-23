@@ -198,6 +198,13 @@
  
 - Implement FMW4 Youmu as another custom unit addOn in the repo. Remember to enable the character by setting the "Enabled" field to `true` for the respective `Data_IsIN`, `data_unit_all`, and `data_char_all` addOns.
 
+- PS for FMW4 Youmu:
+  - [RESTORED|Youmu|FMW4] Ghostly Wheel of Pain (FMW4)
+  ```
+  Increases the activation rate of Afterimage (Youmu) by +20%.
+  Learn Level: Lv. 28
+  ```
+
 - Toggle: Display the number of actions that frontline/backline units have remaining in the unit subwindow. This will be useful for simply checking your unit's actions without needing to memorize their EX, DtD, Zeal set up. Later on, this will be immensely useful for debugging QoL when giving units extra actions and confirming assumptions.
 
 - Toggle: Fix dialog bug where the transformations for Keine/Byakuren/Lily White would display their UnitIDs instead of their normal names. This was a running bug that was seen in early fan-localization efforts since the original FMW3. When the game reads from the text script files, it reads in each line including the portion before the ":"; this portion is the name used to fetch the correct portrait sprite. Now, there is specific logic in the game that is supposed to update these portrait sprite names if a transformation has taken place. There are 3 transformations that are subject to this code logic: Hakutaku Keine, Superhuman Byakuren, and Lily Black. The game will search the map to see if any of these transformations are active and will apply the portrait sprite name update.
