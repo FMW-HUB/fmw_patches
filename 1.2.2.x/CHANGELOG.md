@@ -178,7 +178,7 @@ SkillKind -> Kind
   while Accuracy rate is rounded up to the nearest multiple of 10%.
   Learn Level: Lv. 1
   ```
-  - [RESTORED|Eiki|FMW4] Black-and-White Judgment (OG CB)
+  - [RESTORED|Eiki|FMWCB] Black-and-White Judgment (OG CB)
   ```
   For one turn, the unit's damage will be fixed at 5000 points.
   Does not work on units with Special Resistance.
@@ -743,6 +743,7 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
 
 
 
