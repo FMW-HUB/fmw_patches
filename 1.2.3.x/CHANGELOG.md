@@ -73,7 +73,7 @@
  
 - [Toggle|Bugfixes] Fix animation choreography for spirit casting. Originally, spirit animations were played at 30 FPS by default in the OG FMW games. The sound effects for these animations were made to match this frame speed to sync the timing correctly in the choreography. However, CB now plays spirit animations at 45 FPS. Often at times, you will find that the spirit animation completes before the SE has finished playing. With this mod, the frame speed is now toggleable to be restored to the original 30 FPS. In addition, when the spirit casting animation is sped up, the mod retains CB's original speedup at 45 FPS, so you will not be compromised with slower gameplay animations.
 
-- [Toggle]Mechanics] Restore the ability for enemies to deal critical hits. Additionally, the enemy's final critical rate is halved in the critical calculations like in most versions of the OG FMW games.
+- [Toggle|Mechanics] Restore the ability for enemies to deal critical hits. Additionally, the enemy's final critical rate is halved in the critical calculations like in most versions of the OG FMW games.
 
 - [Toggle|Mechanics] Restore MP cost for movement in Air Terrain. The Shimenawa also regains its original effect to nullify MP cost for movement in Air.
 
@@ -85,7 +85,7 @@
 
 - [Toggle|Mechanics] Restore functionality for the Persist (Grit) spirit to trigger on Graze. This allows the player to toggle between the spirit's functionality in FMW1-3 vs. FMW4 and beyond.
 
-- [Number|Mechanics] Modify barrier behavior when Grazing attacks on the player side. Ther are two modes to input for this mod.
+- [Number|Mechanics] Modify barrier behavior when Grazing attacks on the player side. There are two modes to input for this mod.
   - Mode 0 is the current default behavior for barriers originating from PC CB: Barriers can activate and consume MP in all calculated damage scenarios including Graze, Hit, and Defend
   - Mode 1 is the original behavior in FMW1-4 for barriers: Barriers only activate and consume MP on Hit and Defend
   - The projected barrier sprite in the Battle Info screen only appears when the unit's barrier can successfully nullify/reduce damage; this projected forecast assumes the unit is unfocused. When selecting Mode 1, please be wary of this.
@@ -99,23 +99,25 @@
 - [Toggle|Visual] Restore the unused FMW4 spirit casting animations for Renew and Revive. 
 
 - PSes (Update your addOns folder for `Data_Skills` and `data_char_skill_all`):
-  - [NEW|Alice] Trip Wire L1/2/3/4
+  - [NEW|Alice] Trip Wire L1/2/3/4 
   ```
   Increases Seeker Wire's ATK by <100|200|300|400> and Range by +<1|1|2|2>.
   Lv. 2/3: In addition, Alice can chain an extra 1 doll in Seeker Wire's path.
   Lv. 4: In addition, Alice can chain an extra 2 dolls in Seeker Wire's path. Finally, increases the number of uses of Create Doll (Hourai) by +1.
-  ``` 
+  Learn Level: L1: Lv. 1, L2: Lv. 35, L3: Lv. 55, L4: Lv. 70 
+  ```
   - [RESTORED|Aya|FMW4] Sarutahiko's Guidance
   ```
   At 120+ Power, unit's pair gains +10% evasion rate and +1 Unfocused Move.
+  Learn Level: Lv. 40
   ```
   - [RESTORED|Kogasa|FMW4] Nanny's Parasol
   ```
   50% of the damage taken by the frontline unit is shared with the backline unit.
   This applies to both units in the pair but does not work during Graze.
   Ineffective if the backline unit is shot down or the shared damage exceeds the backline unit's HP.
+  Learn Level: Lv. 50
   ```
-
 
 - Add special functionality for this prepended text `***` for `WepShape` property in `data_weapon_all.txt`. By adding `***` to the beginning of the WepShape text that defines the range/type of a MAP attack, you can specify units in the `WepEffect` property to exclude from the MAP attack targetting. Basically, this will let you have fine-grained control for Friendly Fire on specific units.
 
@@ -195,6 +197,13 @@
   - Add Data_Spirits addOn to display N/A spirits for units that the "NA" spirit in their character data. The Evil Eye, Kedama, and Makai Insect char addOns in data_char_all have been updated to use the NA spirit.
  
 - Implement FMW4 Youmu as another custom unit addOn in the repo. Remember to enable the character by setting the "Enabled" field to `true` for the respective `Data_IsIN`, `data_unit_all`, and `data_char_all` addOns.
+
+- PS for FMW4 Youmu:
+  - [RESTORED|Youmu|FMW4] Ghostly Wheel of Pain (FMW4)
+  ```
+  Increases the activation rate of Afterimage (Youmu) by +20%.
+  Learn Level: Lv. 28
+  ```
 
 - Toggle: Display the number of actions that frontline/backline units have remaining in the unit subwindow. This will be useful for simply checking your unit's actions without needing to memorize their EX, DtD, Zeal set up. Later on, this will be immensely useful for debugging QoL when giving units extra actions and confirming assumptions.
 

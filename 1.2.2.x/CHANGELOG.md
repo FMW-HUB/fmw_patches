@@ -165,44 +165,51 @@ SkillKind -> Kind
 - Fix event bug in Chapter 44 where the game hardcoded the weapon position to be used for the Scarlets cutscene attack. The game will look for Remilia's 6th weapon in her internal weapon list. Because the addOn system now inserts weapons before Scarlets, it's possible that Remilia will use a different weapon than Scarlets, and the game can either play out a different animation or crash.
 
 - PSes:
-  - [RESTORED] Omikuji Bomb
+  - [RESTORED|Sanae|FMW2] Omikuji Bomb
   ```
   Modifies damage dealt by a factor ranging from -20% to +25%.
   This effect is randomly set at the beginning of each turn.
+  Learn Level: Lv. 20
   ```
-  - [RESTORED] Black-and-White Judgment (FMW4)
+  - [RESTORED|Eiki|FMW4] Black-and-White Judgment (FMW4)
   ```
   Rounds up damage dealt and Accuracy rate for both units in Eiki's team.
   Damage dealt is rounded up to the nearest multiple of 1000,
   while Accuracy rate is rounded up to the nearest multiple of 10%.
+  Learn Level: Lv. 1
   ```
-  - [RESTORED] Black-and-White Judgment (OG CB)
+  - [RESTORED|Eiki|FMWCB] Black-and-White Judgment (OG CB)
   ```
   For one turn, the unit's damage will be fixed at 5000 points.
   Does not work on units with Special Resistance.
   (Usable 2 times.)
+  Learn Level: Lv. 35
   ```
-  - [RESTORED] Mark of the Wind
+  - [RESTORED|Sanae|FMW3] Mark of the Wind
   ```
   Consume 30% Faith to cast Miracle on this unit.
   (Usable 1 times.)
+  Learn Level: Lv. 49
   ```
-  - [RESTORED] Youkai Power Spoiler
+  - [RESTORED|Sanae|FMW4] Youkai Power Spoiler
   ```
   Replenishes 20 MP when the unit's team defeats an enemy.
   Sanae must be in the frontline for this skill to activate.
+  Learn Level: Lv. 60
   ```
-  - [RESTORED] Fixed Stars on Earth
+  - [RESTORED|Wriggle|FMW3] Fixed Stars on Earth L1/2
   ```
   All squares in the 1/2/3-square radius around the unit are set to Day terrain.
   The terrain modifier also affects Wriggle's partner.
   Does not affect unit and weapon Night Ratings that are at least S.
+  Learn Level: L1: Lv. 1, L2: Lv.30
   ```
-  - [RESTORED] Devil's Contract - Remilia
+  - [RESTORED|Remilia|FMW3] Devil's Contract - Remilia
   ```
   Grants a buff that sets a unit's Night Terrain Rating to S,
   in exchange for 80% of their max HP.
   (Usable 2 times.)
+  Learn Level: Lv. 10
   ```
     - This PS used to only set unit Night Terrain Rating to A. It has now been buffed to set it at S.
  
@@ -231,31 +238,36 @@ SkillKind -> Kind
 
 ###1.2.2.6###
 - PSes:
-  - [RESTORED] Noblesse Oblige
+  - [RESTORED|Kaguya|FMW3] Noblesse Oblige
   ```
   For one turn, grants the ability Salamander Shield to all adjacent units.
   This effect also applies to the unit's partner. (Usable 2 times.)
+  Learn Level: Lv. 53
   ```
-  - [RESTORED] Boundary of Offense and Defense
+  - [RESTORED|Yukari|FMW3] Boundary of Offense and Defense
   ```
   For one turn, reverses the attack order for all battles between allied and enemy units.
   Additionally, Player Support Attacks still only occur during the Player Phase,
   while Player Support Defends only occur during the Enemy Phase. (Usable 2 times.)
+  Learn Level: Lv. 42
   ```
-  - [RESTORED] Boundary of Dreams and Bonds (Original)
+  - [RESTORED|Yukari|FMW4] Boundary of Dreams and Bonds (Original)
   ```
   For one turn, all frontline allied units are considered adjacent to each other.
   This does not affect Support or Combined unit actions.
+  Learn Level: Lv. 1, learned in Chapter 75 event for Yukari03 CharID
   ```
-  - [RESTORED] Boundary of Vanguard and Rearguard
+  - [RESTORED|Yukari|FMW3] Boundary of Vanguard and Rearguard
   ```
   Switches the frontline and backline positions of all other allied units in a team.
   This effect also applies to units that have already acted. (3 uses)
+  Learn Level: Lv. 42
   ```
-  - [RESTORED] Boundary of Focused and Unfocused
+  - [RESTORED|Yukari|FMW3] Boundary of Focused and Unfocused
   ```
   Switches the Focused and Unfocused modes of all other allied units.
   This effect also applies to units that have already acted. (3 uses)
+  Learn Level: Lv. 42
   ```
 
 - Implement the `addOn` system. We now have a way to perform in-memory data file structure patching with this new system. The addOns for each data file allow you to add new json structure entries that correspond to individual spreadsheet rows for each data file. Think of this as letting you patch and add in-memory data file structures with your own custom fields. At the moment, this only supports adding new data, but in the future replacement will be possible as well. Use the LayeredFS mod tool to replace existing data rows for now.
@@ -731,6 +743,8 @@ The previous code used the canonical unit position of 0 to represent the vanguar
   - Restored afterimage trails present in the original animation when Sakuya moves among the 5 locations for placing knives.
   - Knife collapse animation portion used to prematurely draw opponent in the middle of knives. Reverted Switch change to draw opponent sprite behind knives and slash effects.
   - Inserted grayscale effect in animation. gpu_set_blendmode_ext is bugged when compiled in UTMT's GML compiler; 50% of the src/dest blending options do not work. Atm, I can't get the desired blending equation to preserve the present hue and alpha of the opponent sprite like in the old animation. Until this is fixed in the modding tool, the grayscale effect will need to be applied to the whole screen without the hue and alpha blending option.
+
+
 
 
 
