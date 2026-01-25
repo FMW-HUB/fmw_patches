@@ -1,3 +1,28 @@
+###1.2.3.3a###
+- [Toggle|QoL] Enable reallocating Full Upgrade Bonus/EX Bonus for characters in the upgrade menu. Feel free to swap whatever bonuses you'd like for your units to experiment with different builds. Items should also update properly in the inventory if they've been taken off due to unselecting the +1 Item EX Bonus.
+
+- [Toggle|Visual] Toggle cut-in graphics in animation.
+
+- [Toggle|Mechanics] Restore 0.70x assist attack penalty for 1.0 cost units, matching the behavior back in FMW4.
+
+- Add new `experimental_mods` folder to organize mods that may have more permanent effects on the game. They are not necessary for the game, and you should only use them if you know what you are doing.
+
+- Disable previous event flag reset behavior when the Debug Menu was enabled. This behavior used would reset event flags and set them to true, while also removing units that were unlocked through hitting these event flags. Specifically, Akyu, Lily Black, and classic Reimu/Marisa could potentially be permanently removed from the roster if the Debug Menu was enabled and the game was saved. A new toggle mod was added to `experimental_mods` to retain this behavior.
+  - [Toggle|Debugging|Experimental] Reset chapter-dependent event flags every time the Intermission is saved and reloaded, and set them to true.
+
+- PS (Update your addOns folder for `Data_Skills` and `data_char_skill_all`):
+  - [RESTORED|Koakuma|FMW3] Koa Block L1/2/3
+  ```
+  Unit gains a <25|33|40>% chance to automatically Defend against attacks.
+  Learn Level: L1: Lv. 1, L2: Lv. 25, L3: Lv. 45
+  ```
+  
+- Fix Reattack/Time Paradox activations removing the FPM aura effects in the Battle Info screen.
+
+- Fix Upgrade Units/EX Upgrade text headers improperly shifting in the Intermission and chapter map prep screens. The EX Upgrade text header used to shift when EX Bonuses were selected; this fix should now prevent that.
+
+- Fix default values set for Toggle mods internally in the EXE that were previously typed as `string` instead of `boolean`.
+
 ###1.2.3.3###
 
 - The first new custom frame for a character has been implemented. Introducing *Alice Margatroid (Hourai Equipment)*, an unused character frame in FMW3 with now-completed data in this modding version.
