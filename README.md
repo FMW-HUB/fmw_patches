@@ -1,7 +1,7 @@
 # fmw_patches
 WIP Patch Repository for Fantasy Maiden Wars - DREAM OF THE STRAY DREAMER -
 
-Latest modding version: **1.2.3.3a**
+Latest modding version: **1.2.4.1**
 
 # Instructions
 1. Download [Delta Patcher](https://www.romhacking.net/utilities/704/) to apply the `*.xdelta` patches in this repo. Each folder corresponds to the original version of the game; download the patches in the folder that apply to your current game version.
