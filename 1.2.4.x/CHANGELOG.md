@@ -1,3 +1,6 @@
+###1.2.4.1a###
+- Fix addOn bug for adding new abilities in the Data_Specials group by removing extraneous `pos` argument for functions that append to the abilities database. 
+
 ###1.2.4.1###
 - Migrate previous mod changes from 1.2.3.x
 
