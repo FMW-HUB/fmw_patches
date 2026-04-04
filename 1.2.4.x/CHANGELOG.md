@@ -1,3 +1,8 @@
+###1.2.4.1b###
+- Remove experimental changes for save metadata writes that had previously corrupted the Library data. Please download and apply this patch to restore saving/loading to original metadata format.
+- Remove debug message logging for Straw Doll Kamikaze animation.
+- Add skeleton for FMW1 Beta Flower Shooting animation. Internal name: `fshooting_beta`
+
 ###1.2.4.1a###
 - Fix addOn bug for adding new abilities in the Data_Specials group by removing extraneous `pos` argument for functions that append to the abilities database. 
 
